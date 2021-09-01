@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tronghieu60s/garden-game.git"
+    "url": "git+https://github.com/duc622/garden-game.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tronghieu60s/garden-game/issues"
+    "url": "https://github.com/duc622/garden-game/issues"
   },
-  "homepage": "https://tronghieu60s.github.io/garden-game",
+  "homepage": "https://duc622.github.io/garden-game",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
