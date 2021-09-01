@@ -1,6 +1,6 @@
 # Garden Game
 
-![CI/CD](https://github.com/duc622/garden-game/workflows/CI/CD/badge.svg)
+[![codecov](https://codecov.io/gh/duc622/garden-game/branch/master/graph/badge.svg)](https://codecov.io/gh/duc622/garden-game)
 ![version](https://img.shields.io/github/package-json/v/duc622/garden-game)
 ![code-size](https://img.shields.io/github/languages/code-size/duc622/garden-game)
 ![license](https://img.shields.io/github/license/duc622/garden-game)
