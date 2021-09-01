@@ -33,7 +33,7 @@ export default function App() {
   const handleSetPlant = (index) => {
     // check plant exists and selected
     if (!choosePlant) {
-      return alert("Vui lòng chọn cây cần trồng trước.");
+      return;
     }
     if (!isEmptyObject(plants[index])) {
       return alert("Cây đã được trồng, vui lòng chọn ô khác.");
