@@ -9,11 +9,10 @@ export const objectToArray = (object, nameKey = "key") => {
 };
 
 export const isEmptyObject = (obj) => {
-  for (var prop in obj) {
+  for (const prop in obj) {
     if (obj.hasOwnProperty(prop)) {
       return false;
     }
   }
-
   return JSON.stringify(obj) === JSON.stringify({});
 };
