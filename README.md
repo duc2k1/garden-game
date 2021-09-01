@@ -1,8 +1,8 @@
 # Garden Game
 
-![version](https://img.shields.io/github/package-json/v/tronghieu60s/garden-game)
-![code-size](https://img.shields.io/github/languages/code-size/tronghieu60s/garden-game)
-![license](https://img.shields.io/github/license/tronghieu60s/garden-game)
+![version](https://img.shields.io/github/package-json/v/duc622/garden-game)
+![code-size](https://img.shields.io/github/languages/code-size/duc622/garden-game)
+![license](https://img.shields.io/github/license/duc622/garden-game)
 
 ## Sources
 
@@ -35,8 +35,8 @@ Run production:
 $ yarn build
 ```
 
-
 ## Contributing
+
 Pull requests and stars are highly welcome.
 
 For bugs and feature requests, please create an issue.
