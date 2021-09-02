@@ -36,13 +36,13 @@ export default function App() {
       return;
     }
     if (!isEmptyObject(plants[index])) {
-      return alert("Cây đã được trồng, vui lòng chọn ô khác.");
+      return;
     }
 
     // price action
     const coinPrice = coinBankVal - choosePlant.purchasePrice;
     if (coinPrice < 0) {
-      return alert("Bro không có đủ tiền. Hãy nạp lần đầu đi bro!!!");
+      return;
     }
     setCoinBankVal(coinPrice);
 
