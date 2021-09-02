@@ -2,13 +2,12 @@
 
 ![version](https://img.shields.io/github/package-json/v/duc622/garden-game)
 ![code-size](https://img.shields.io/github/languages/code-size/duc622/garden-game)
-![license](https://img.shields.io/github/license/duc622/garden-game)
 
 ## Sources
 
 Images: https://plantsvszombies.fandom.com/wiki/Peashooter
 
-Soundtrack: https://www.nhaccuatui.com/playlist/plants-vs-zombies-1-soundtrack-laura-shigihara.8GPJbMyb5axu.html?st=14
+Soundtrack: https://www.nhaccuatui.com/playlist/plants-vs-zombies-1-soundtrack-laura-shigihara.8GPJbMyb5axu.html?st=7
 
 ## Installation
 
