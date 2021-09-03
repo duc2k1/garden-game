@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
 const image = "./assets/images/tools/glove.png";
 
-export default function Glove(props) {
+export default memo(function Glove(props) {
   const { isGetGlove, setIsGetGlove } = props;
 
   const handleGetGlove = () => {
@@ -20,4 +20,4 @@ export default function Glove(props) {
       ></div>
     </div>
   );
-}
+});

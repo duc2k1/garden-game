@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function sendBankItem(props) {
+export default memo(function sendBankItem(props) {
   const { plant, choosePlant, setChoosePlant } = props;
   return (
     <div
@@ -11,9 +11,7 @@ export default function sendBankItem(props) {
     >
       <img src={plant.image1b} />
       <img src={plant.image2b} />
-      <div className="gd-sendBank-item-price">
-        {plant.purchasePrice}
-      </div>
+      <div className="gd-sendBank-item-price">{plant.purchasePrice}</div>
     </div>
   );
-}
+});

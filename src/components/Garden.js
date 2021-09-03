@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import GardenItem from "./GardenItem";
 
-export default function Garden(props) {
+export default memo(function Garden(props) {
   const { plants, choosePlant, setPlant, deletePlant } = props;
   return (
     <div className="gd-garden">
@@ -16,4 +16,4 @@ export default function Garden(props) {
       ))}
     </div>
   );
-}
+});

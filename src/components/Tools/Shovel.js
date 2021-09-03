@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
 const image = "./assets/images/tools/shovel.png";
 
-export default function Shovel(props) {
+export default memo(function Shovel(props) {
   const { isGetShovel, setIsGetShovel } = props;
 
   const handleGetShovel = () => {
@@ -24,4 +24,4 @@ export default function Shovel(props) {
       ></div>
     </div>
   );
-}
+});

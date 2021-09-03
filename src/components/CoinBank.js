@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function CoinBank(props) {
+export default memo(function CoinBank(props) {
   const { coinBankVal } = props;
 
   return (
@@ -8,4 +8,4 @@ export default function CoinBank(props) {
       <div className="gd-coinBank-val">{coinBankVal}</div>
     </div>
   );
-}
+});
