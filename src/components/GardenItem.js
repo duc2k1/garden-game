@@ -6,6 +6,7 @@ export default memo(function GardenItem({
   choosePlant,
   setPlant,
   deletePlant,
+  isGetShovel,
   isGetGlove,
   coinBankVal,
   setCoinBankVal,
@@ -38,6 +39,11 @@ export default memo(function GardenItem({
       clearInterval(setTime);
     };
   }, [timer]);
+  // useEffect(()=>{
+  //   if(set)
+
+  // },[coinBankVal])
+
   //
   const harvest = () => {
     deletePlant();
@@ -63,11 +69,21 @@ export default memo(function GardenItem({
         } else {
           if (plantStatus === 2) {
             setCoinBankVal(
-              coinBankVal + plant?.salePrice ? plant?.salePrice : 0
+              coinBankVal + plant?.salePrice ? coinBankVal + plant?.salePrice : 0
             );
             setPlantStatus(1);
             setNumberOfHarvest(numberOfHarvest + 1);
           }
+        }
+        //deletePlant by Shovel
+        if (isGetShovel) {
+          deletePlant();
+          setPlantBlur(null);
+          setPlantStatus(0);
+          setTimer(null);
+          setIsPlanted(false);
+          setNumberOfHarvest(0);
+          console.log("xóa");
         }
       }}
       onMouseEnter={() => {

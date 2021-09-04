@@ -2,9 +2,7 @@ import React, { memo } from "react";
 
 const image = "./assets/images/tools/shovel.png";
 
-export default memo(function Shovel(props) {
-  const { isGetShovel, setIsGetShovel } = props;
-
+export default memo(function Shovel({ isGetShovel, setIsGetShovel }) {
   const handleGetShovel = () => {
     setIsGetShovel(!isGetShovel);
     isGetShovel
