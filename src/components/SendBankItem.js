@@ -1,7 +1,12 @@
 import React, { memo } from "react";
 
-export default memo(function sendBankItem(props) {
-  const { plant, choosePlant, setChoosePlant } = props;
+export default memo(function sendBankItem({
+  coinBankVal,
+  plant,
+  choosePlant,
+  setChoosePlant,
+}) {
+  //
   return (
     <div
       className={`gd-sendBank-item${

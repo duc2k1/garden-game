@@ -1,17 +1,15 @@
 import React, { memo } from "react";
-
+//
 const image = "./assets/images/tools/glove.png";
-
-export default memo(function Glove(props) {
-  const { isGetGlove, setIsGetGlove } = props;
-
+//
+export default memo(function Glove({ isGetGlove, setIsGetGlove }) {
   const handleGetGlove = () => {
     setIsGetGlove(!isGetGlove);
     isGetGlove
       ? (document.body.style.cursor = `auto`)
-      : (document.body.style.cursor = `url(${image}) 40 40, auto`);
+      : (document.body.style.cursor = `url(${image}) 40 40, pointer`);
   };
-
+  //
   return (
     <div className="gd-bank" onClick={() => handleGetGlove()}>
       <div

@@ -1,8 +1,15 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
 import { isEmptyObject } from "../helpers/commonFunctions";
 //
-export default memo(function GardenItem(props) {
-  const { plant, choosePlant, setPlant, deletePlant } = props;
+export default memo(function GardenItem({
+  plant,
+  choosePlant,
+  setPlant,
+  deletePlant,
+  isGetGlove,
+  coinBankVal,
+  setCoinBankVal,
+}) {
   const [plantBlur, setPlantBlur] = useState(null);
   const [plantStatus, setPlantStatus] = useState(0); // 0: Seed, 1: Can't harvested, 2: Can harvested
   const [timer, setTimer] = useState(0);
@@ -11,9 +18,7 @@ export default memo(function GardenItem(props) {
   //
   useEffect(() => {
     if (numberOfHarvest > 2) {
-      deletePlant();
-      setTimer(null);
-      return;
+      harvest();
     }
     if (plantStatus > 2) {
       setPlantStatus(1);
@@ -34,15 +39,35 @@ export default memo(function GardenItem(props) {
     };
   }, [timer]);
   //
+  const harvest = () => {
+    deletePlant();
+    setPlantBlur(null);
+    setPlantStatus(0);
+    setTimer(null);
+    setIsPlanted(false);
+    setNumberOfHarvest(0);
+    return;
+  };
+  //
   return (
     <div
       className="gd-garden-item"
       onClick={() => {
-        if (choosePlant && !isPlanted) {
-          setPlantStatus(0);
-          setIsPlanted(true);
-          setTimer(choosePlant?.timer);
-          setPlant();
+        if (!isGetGlove) {
+          if (choosePlant && !isPlanted) {
+            setPlantStatus(0);
+            setIsPlanted(true);
+            setTimer(choosePlant?.timer);
+            setPlant();
+          }
+        } else {
+          if (plantStatus === 2) {
+            setCoinBankVal(
+              coinBankVal + plant?.salePrice ? plant?.salePrice : 0
+            );
+            setPlantStatus(1);
+            setNumberOfHarvest(numberOfHarvest + 1);
+          }
         }
       }}
       onMouseEnter={() => {

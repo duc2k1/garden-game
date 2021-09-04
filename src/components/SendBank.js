@@ -1,12 +1,18 @@
 import React, { memo } from "react";
 import SendBackItem from "./SendBankItem";
 
-export default memo(function SendBank(props) {
-  const { plants, choosePlant, setChoosePlant } = props;
+export default memo(function SendBank({
+  coinBankVal,
+  plants,
+  choosePlant,
+  setChoosePlant,
+}) {
+  //
   return (
     <div className="gd-sendBank">
       {plants.map((plant) => (
         <SendBackItem
+          coinBankVal={coinBankVal}
           key={plant.key}
           plant={plant}
           choosePlant={choosePlant}

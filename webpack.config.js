@@ -31,7 +31,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       baseUrl: "./",
       template: path.join(__dirname, "public", "index.html"),
-      title: "Garden Now!!!",
+      title: "Garden Game",
     }),
     new CopyWebpackPlugin({
       patterns: [

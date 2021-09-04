@@ -11,14 +11,11 @@ const plantsList = objectToArray(plants);
 const soundtrack = new Audio("./assets/sounds/soundtrack.mp3");
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(99999); //money
+  const [coinBankVal, setCoinBankVal] = useState(100); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
-
   const [isGetGlove, setIsGetGlove] = useState(false);
   const [isGetShovel, setIsGetShovel] = useState(false);
-  const [isNoMoreMoney, setIsNoMoreMoney] = useState(false);
-  const [modeTool, setModeTool] = useState("grow"); //grow, harvest, asperse, fertilize
   //
   useEffect(() => {
     // block dragging of images
@@ -65,17 +62,21 @@ export default memo(function App() {
     >
       <div className="gd-container-game">
         <SendBack
+          coinBankVal={coinBankVal}
           plants={plantsList}
           choosePlant={choosePlant}
-          setChoosePlant={(plant) =>
-            setChoosePlant(plant === choosePlant ? null : plant)
-          }
+          setChoosePlant={(plant) => {
+            setChoosePlant(plant === choosePlant ? null : plant);
+          }}
         />
         <Garden
           plants={plants}
           choosePlant={choosePlant}
           setPlant={handleSetPlant}
           deletePlant={handleDeletePlant}
+          isGetGlove={isGetGlove}
+          coinBankVal={coinBankVal}
+          setCoinBankVal={setCoinBankVal}
         />
         <CoinBank coinBankVal={coinBankVal} />
         <div>
