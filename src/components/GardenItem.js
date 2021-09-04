@@ -1,60 +1,58 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
 import { isEmptyObject } from "../helpers/commonFunctions";
-
+//
 export default memo(function GardenItem(props) {
   const { plant, choosePlant, setPlant, deletePlant } = props;
-
   const [plantBlur, setPlantBlur] = useState(null);
   const [plantStatus, setPlantStatus] = useState(0); // 0: Seed, 1: Can't harvested, 2: Can harvested
-
-  const [timer, setTimer] = useState(plant.timer || 0);
+  const [timer, setTimer] = useState(0);
+  const [isPlanted, setIsPlanted] = useState(false);
   const [isOverTimer, setIsOverTimer] = useState(false);
-
-  const handleStatusPlant = () => {
-    if (!isOverTimer) {
-      if (timer < plant?.timer / 2 && plantStatus < 1) {
-        // time tree change to level 1
-        setPlantStatus(1);
-      }
-      // the plant has grown and set over time
-      if (timer < 0 && plantStatus < 2) {
-        setPlantStatus(2);
-        setTimer(plant.overTimer);
-        setIsOverTimer(true);
-      }
-    } else {
-      // plant status === 2 => did over time
-      if (timer < 0 && plantStatus === 2) {
-        deletePlant();
-        setIsOverTimer(false);
-      }
-    }
-  };
-
-  useEffect(() => setTimer(plant.timer), [plant]);
+  const [numberOfHarvest, setNumberOfHarvest] = useState(0);
+  //
   useEffect(() => {
-    handleStatusPlant();
-    // set timer count down
-    if (timer > 0) {
-      const timerCount = setInterval(() => {
-        setTimer(timer - 0.1);
-      }, 100);
-      return () => {
-        clearInterval(timerCount);
-      };
+    if (numberOfHarvest > 2) {
+      deletePlant();
+      setTimer(null);
+      return;
     }
-  });
-
+    if (plantStatus > 2) {
+      setPlantStatus(1);
+      setNumberOfHarvest(numberOfHarvest + 1);
+      setTimer(plant?.timer);
+    }
+    if (plantStatus === 2) setIsOverTimer(true);
+    if (timer === 0) {
+      //planted
+      setPlantStatus(plantStatus + 1);
+      setTimer(plant?.timer);
+    }
+    //plating
+    const setTime = setInterval(() => {
+      setTimer(timer - 1);
+    }, 1000);
+    return () => {
+      clearInterval(setTime);
+    };
+  }, [timer]);
+  //
   return (
     <div
       className="gd-garden-item"
       onClick={() => {
-        setPlant();
-        setPlantStatus(0);
+        if (choosePlant && !isPlanted) {
+          setPlantStatus(0);
+          setIsPlanted(true);
+          setTimer(choosePlant?.timer);
+          setPlant();
+        }
+      }}
+      onMouseEnter={() => {
+        setPlantBlur(choosePlant?.image2);
+      }}
+      onMouseLeave={() => {
         setPlantBlur(null);
       }}
-      onMouseEnter={() => setPlantBlur(choosePlant?.image2)}
-      onMouseLeave={() => setPlantBlur(null)}
     >
       {plant && (
         <Fragment>
@@ -69,7 +67,7 @@ export default memo(function GardenItem(props) {
               isOverTimer ? " over-timer" : ""
             }`}
           >
-            {timer?.toFixed(1)}
+            {isPlanted ? timer : null}
           </div>
         </Fragment>
       )}
