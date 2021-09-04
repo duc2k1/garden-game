@@ -21,7 +21,8 @@ export default memo(function GardenItem({
   //
   useEffect(() => {
     if (numberOfHarvest > 2) {
-      harvest();
+      handleSetDefault();
+      return;
     }
     if (plantStatus > 2) {
       setPlantStatus(1);
@@ -42,49 +43,53 @@ export default memo(function GardenItem({
     };
   }, [timer]);
   //
-  const harvest = () => {
+  const handleSetDefault = () => {
     deletePlant();
     setPlantBlur(null);
     setPlantStatus(0);
     setTimer(null);
     setIsPlanted(false);
     setNumberOfHarvest(0);
-    return;
+  };
+  //
+  const handleInteractWithPlant = () => {
+    if (
+      choosePlant &&
+      !isPlanted &&
+      !isGetGlove &&
+      !isGetShovel &&
+      !isGetWateringCan
+    ) {
+      setPlantStatus(0);
+      setIsPlanted(true);
+      setTimer(choosePlant?.timer);
+      setPlant();
+      return;
+    }
+    if (isGetGlove && plantStatus === 2) {
+      const sound = new Audio("./assets/sounds/plant.ogg");
+      sound.play();
+      setCoinBankVal(
+        coinBankVal + plant?.salePrice ? coinBankVal + plant?.salePrice : 0
+      );
+      setPlantStatus(1);
+      setNumberOfHarvest(numberOfHarvest + 1);
+      setTimer(plant?.timer);
+      return;
+    }
+    //deletePlant by Shovel
+    if (isGetShovel) {
+      const sound = new Audio("./assets/sounds/plant.ogg");
+      sound.play();
+      handleSetDefault();
+      return;
+    }
   };
   //
   return (
     <div
       className="gd-garden-item"
-      onClick={() => {
-        if (!isGetGlove) {
-          if (choosePlant && !isPlanted) {
-            setPlantStatus(0);
-            setIsPlanted(true);
-            setTimer(choosePlant?.timer);
-            setPlant();
-          }
-        } else {
-          if (plantStatus === 2) {
-            setCoinBankVal(
-              coinBankVal + plant?.salePrice
-                ? coinBankVal + plant?.salePrice
-                : 0
-            );
-            setPlantStatus(1);
-            setNumberOfHarvest(numberOfHarvest + 1);
-            setTimer(plant?.timer);
-          }
-        }
-        //deletePlant by Shovel
-        if (isGetShovel) {
-          deletePlant();
-          setPlantBlur(null);
-          setPlantStatus(0);
-          setTimer(null);
-          setIsPlanted(false);
-          setNumberOfHarvest(0);
-        }
-      }}
+      onClick={() => handleInteractWithPlant()}
       onMouseEnter={() => {
         setPlantBlur(choosePlant?.image2);
       }}
