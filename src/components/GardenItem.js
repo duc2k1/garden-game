@@ -7,7 +7,6 @@ export default memo(function GardenItem(props) {
   const [plantStatus, setPlantStatus] = useState(0); // 0: Seed, 1: Can't harvested, 2: Can harvested
   const [timer, setTimer] = useState(0);
   const [isPlanted, setIsPlanted] = useState(false);
-  const [isOverTimer, setIsOverTimer] = useState(false);
   const [numberOfHarvest, setNumberOfHarvest] = useState(0);
   //
   useEffect(() => {
@@ -21,7 +20,6 @@ export default memo(function GardenItem(props) {
       setNumberOfHarvest(numberOfHarvest + 1);
       setTimer(plant?.timer);
     }
-    if (plantStatus === 2) setIsOverTimer(true);
     if (timer === 0) {
       //planted
       setPlantStatus(plantStatus + 1);
@@ -64,7 +62,7 @@ export default memo(function GardenItem(props) {
           </div>
           <div
             className={`gd-garden-item-timer${
-              isOverTimer ? " over-timer" : ""
+              plantStatus === 2 ? " over-timer" : ""
             }`}
           >
             {isPlanted ? timer : null}
