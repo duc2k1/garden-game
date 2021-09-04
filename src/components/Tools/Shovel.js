@@ -13,7 +13,7 @@ export default memo(function Shovel({ isGetShovel, setIsGetShovel }) {
   return (
     <div
       className="gd-bank"
-      style={{ top: "105px" }}
+      style={{ top: 105 }}
       onClick={() => handleGetShovel()}
     >
       <div

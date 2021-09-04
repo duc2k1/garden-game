@@ -6,6 +6,9 @@ export default memo(function SendBank({
   plants,
   choosePlant,
   setChoosePlant,
+  isGetGlove,
+  isGetShovel,
+  isGetTreeFood,
 }) {
   //
   return (
@@ -17,6 +20,9 @@ export default memo(function SendBank({
           plant={plant}
           choosePlant={choosePlant}
           setChoosePlant={() => setChoosePlant(plant)}
+          isGetGlove={isGetGlove}
+          isGetShovel={isGetShovel}
+          isGetTreeFood={isGetTreeFood}
         />
       ))}
     </div>

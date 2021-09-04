@@ -15,6 +15,7 @@ export default memo(function App() {
   const [choosePlant, setChoosePlant] = useState(null);
   const [isGetGlove, setIsGetGlove] = useState(false);
   const [isGetShovel, setIsGetShovel] = useState(false);
+  const [isGetTreeFood, setIsGetTreeFood] = useState(false);
   //
   useEffect(() => {
     // block dragging of images
@@ -67,6 +68,9 @@ export default memo(function App() {
           setChoosePlant={(plant) => {
             setChoosePlant(plant === choosePlant ? null : plant);
           }}
+          isGetGlove={isGetGlove}
+          isGetShovel={isGetShovel}
+          isGetTreeFood={isGetTreeFood}
         />
         <Garden
           plants={plants}
@@ -84,6 +88,8 @@ export default memo(function App() {
           setIsGetGlove={setIsGetGlove}
           isGetShovel={isGetShovel}
           setIsGetShovel={setIsGetShovel}
+          isGetTreeFood={isGetTreeFood}
+          setIsGetTreeFood={setIsGetTreeFood}
         />
       </div>
     </div>

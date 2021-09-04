@@ -1,16 +1,23 @@
-import React, { memo } from "react";
-
+import React, { memo, useEffect } from "react";
+//
 export default memo(function sendBankItem({
   coinBankVal,
   plant,
   choosePlant,
   setChoosePlant,
+  isGetGlove,
+  isGetShovel,
+  isGetTreeFood,
 }) {
+  const logicChoosePlant =
+    coinBankVal < plant.purchasePrice ||
+    isGetGlove ||
+    isGetShovel ||
+    isGetTreeFood;
   const handleSendBank = () => {
-    if (coinBankVal < plant.purchasePrice) {
-      setChoosePlant;
-    }
-    else{
+    if (logicChoosePlant) {
+      return;
+    } else {
       setChoosePlant(null);
     }
   };
@@ -20,12 +27,10 @@ export default memo(function sendBankItem({
       className={`gd-sendBank-item${
         plant?.key !== choosePlant?.key ? " active" : ""
       }`}
-      onClick={() =>handleSendBank()}
+      onClick={() => handleSendBank()}
     >
       <img src={plant.image1b} />
-      <img
-        src={coinBankVal >= plant.purchasePrice ? plant.image2b : plant.image1b}
-      />
+      <img src={logicChoosePlant ? plant.image1b : plant.image2b} />
       <div className="gd-sendBank-item-price">{plant.purchasePrice}</div>
     </div>
   );

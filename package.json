@@ -22,7 +22,8 @@
   "homepage": "https://duc622.github.io/garden-game",
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-sweet-progress": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
