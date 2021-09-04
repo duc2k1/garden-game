@@ -162,3 +162,10 @@
   background-size: contain;
   margin: auto;
 }
+
+.gd-water-drop-image {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+}
