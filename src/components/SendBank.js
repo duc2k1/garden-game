@@ -9,6 +9,7 @@ export default memo(function SendBank({
   isGetGlove,
   isGetShovel,
   isGetTreeFood,
+  isGetWateringCan,
 }) {
   //
   return (
@@ -23,6 +24,7 @@ export default memo(function SendBank({
           isGetGlove={isGetGlove}
           isGetShovel={isGetShovel}
           isGetTreeFood={isGetTreeFood}
+          isGetWateringCan={isGetWateringCan}
         />
       ))}
     </div>

@@ -160,6 +160,11 @@
   background-size: contain;
 }
 
+.gd-bank-image:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .gd-water-drop-image {
   position: absolute;
   top: 5px;

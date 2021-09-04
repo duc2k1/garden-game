@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 //
 export default memo(function sendBankItem({
   coinBankVal,
@@ -8,12 +8,14 @@ export default memo(function sendBankItem({
   isGetGlove,
   isGetShovel,
   isGetTreeFood,
+  isGetWateringCan,
 }) {
   const logicChoosePlant =
     coinBankVal < plant.purchasePrice ||
     isGetGlove ||
     isGetShovel ||
-    isGetTreeFood;
+    isGetTreeFood ||
+    isGetWateringCan;
   const handleSendBank = () => {
     if (logicChoosePlant) {
       return;
