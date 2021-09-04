@@ -8,6 +8,7 @@ export default memo(function Garden({
   deletePlant,
   isGetShovel,
   isGetGlove,
+  isGetWateringCan,
   coinBankVal,
   setCoinBankVal,
 }) {
@@ -23,6 +24,7 @@ export default memo(function Garden({
           deletePlant={() => deletePlant(index)}
           isGetGlove={isGetGlove}
           isGetShovel={isGetShovel}
+          isGetWateringCan={isGetWateringCan}
           coinBankVal={coinBankVal}
           setCoinBankVal={setCoinBankVal}
         />
