@@ -83,7 +83,7 @@ export default memo(function GardenItem({
           setTimer(null);
           setIsPlanted(false);
           setNumberOfHarvest(0);
-          console.log("xóa");
+          console.log("xóa"); 
         }
       }}
       onMouseEnter={() => {
