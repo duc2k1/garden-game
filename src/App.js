@@ -81,6 +81,7 @@ export default memo(function App() {
           deletePlant={handleDeletePlant}
           isGetGlove={isGetGlove}
           isGetShovel={isGetShovel}
+          isGetTreeFood={isGetTreeFood}
           isGetWateringCan={isGetWateringCan}
           coinBankVal={coinBankVal}
           setCoinBankVal={setCoinBankVal}

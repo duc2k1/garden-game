@@ -9,6 +9,7 @@ export default memo(function GardenItem({
   deletePlant,
   isGetShovel,
   isGetGlove,
+  isGetTreeFood,
   isGetWateringCan,
   coinBankVal,
   setCoinBankVal,
@@ -58,6 +59,7 @@ export default memo(function GardenItem({
       !isPlanted &&
       !isGetGlove &&
       !isGetShovel &&
+      !isGetTreeFood &&
       !isGetWateringCan
     ) {
       setPlantStatus(0);
