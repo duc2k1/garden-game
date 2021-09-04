@@ -91,7 +91,6 @@ export default memo(function GardenItem({
     >
       {plant && (
         <Fragment>
-          <img src={isPlanted ? "./assets/images/inf/waterdrop.png" : null} />
           <div className="gd-garden-image">
             <img src={plant[`image${plantStatus + 1}`]} />
             {isEmptyObject(plant) && (
@@ -105,6 +104,10 @@ export default memo(function GardenItem({
           >
             {isPlanted ? timer : null}
           </div>
+          <img
+            src={isPlanted ? "./assets/images/inf/water-drop.png" : null}
+            className="gd-water-drop-image"
+          />
         </Fragment>
       )}
     </div>

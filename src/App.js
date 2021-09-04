@@ -2,8 +2,6 @@ import React, { useState, useEffect, memo } from "react";
 import CoinBank from "./components/CoinBank";
 import Garden from "./components/Garden";
 import SendBack from "./components/SendBank";
-import Glove from "./components/Tools/Glove";
-import Shovel from "./components/Tools/Shovel";
 import Tools from "./components/Tools/Tools";
 import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
