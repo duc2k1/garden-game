@@ -21,9 +21,10 @@
   },
   "homepage": "https://duc622.github.io/garden-game",
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-sweet-progress": "^1.1.2"
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

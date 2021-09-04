@@ -1,7 +1,6 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
 import { isEmptyObject } from "../helpers/commonFunctions";
-import { Progress } from "react-sweet-progress";
-import "react-sweet-progress/lib/style.css";
+import ProgressBar from "../Progress";
 //
 export default memo(function GardenItem({
   plant,
@@ -99,22 +98,17 @@ export default memo(function GardenItem({
               <img className="gd-garden-image-blur" src={plantBlur} />
             )}
           </div>
-          {isPlanted ? (
-            <>
-              <img
-                src="./assets/images/inf/water-drop.png"
-                className="gd-water-drop-image"
-              />
-              <Progress
-                percent={100 - (timer * 100) / plant?.timer}
-                status={null}
-                className="gd-progress-bar"
-                style={{ height: 2 }}
-              />
-            </>
-          ) : (
-            <></>
-          )}
+          <div
+            className={`gd-garden-item-timer${
+              plantStatus === 2 ? " over-timer" : ""
+            }`}
+          >
+            {isPlanted ? <ProgressBar value={timer} max={plant?.timer}/>  : null}
+          </div>
+          <img
+            src={isPlanted ? "./assets/images/inf/water-drop.png" : null}
+            className="gd-water-drop-image"
+          />
         </Fragment>
       )}
     </div>
