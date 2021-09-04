@@ -147,20 +147,17 @@
   position: absolute;
   top: 20px;
   right: 50px;
-  width: 70px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   background-image: url(../images/inf/bank.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .gd-bank-image {
-  width: 70px;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
+  width: 80px;
+  height: 80px;
   background-size: contain;
-  margin: auto;
 }
 
 .gd-water-drop-image {
@@ -168,4 +165,13 @@
   top: 5px;
   right: 5px;
   font-size: 12px;
+}
+
+.gd-progress-bar {
+  position: absolute;
+  bottom: 0;
+}
+
+.react-sweet-progress-symbol {
+  display: none !important;
 }
