@@ -5,9 +5,9 @@
 
 ## Sources
 
-Images: https://plantsvszombies.fandom.com/wiki/Peashooter
+Images: https://gamevui.vn/plants-vs-zombies/game and assets PVZ
 
-Soundtrack: https://www.nhaccuatui.com/playlist/plants-vs-zombies-1-soundtrack-laura-shigihara.8GPJbMyb5axu.html?st=7
+Sound: https://www.nhaccuatui.com/playlist/plants-vs-zombies-1-soundtrack-laura-shigihara.8GPJbMyb5axu.html?st=7 and assets PVZ
 
 ## Installation
 
