@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve --mode development",
-    "deploy": "webpack --mode production & gh-pages -d dist"
+    "build": "webpack --mode production",
+    "preinstall": "npx only-allow yarn",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
