@@ -7,7 +7,7 @@ export default {
     image3: "./assets/images/plant/Plant1B.gif",
     purchasePrice: 50,
     salePrice: 100,
-    timer: 2,
+    timer: 10,
   },
   plant6: {
     image1b: "./assets/images/plantb/PlantB6A.png",
@@ -17,7 +17,7 @@ export default {
     image3: "./assets/images/plant/Plant6B.gif",
     purchasePrice: 50,
     salePrice: 100,
-    timer: 2,
+    timer: 10,
   },
   plant4: {
     image1b: "./assets/images/plantb/PlantB4A.png",

@@ -1,5 +1,6 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
 import { isEmptyObject } from "../helpers/commonFunctions";
+import ProgressBar from "../Progress";
 //
 export default memo(function GardenItem({
   plant,
@@ -102,7 +103,7 @@ export default memo(function GardenItem({
               plantStatus === 2 ? " over-timer" : ""
             }`}
           >
-            {isPlanted ? timer : null}
+            {isPlanted ? <ProgressBar value={timer} max={plant?.timer}/>  : null}
           </div>
           <img
             src={isPlanted ? "./assets/images/inf/water-drop.png" : null}
