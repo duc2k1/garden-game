@@ -39,11 +39,6 @@ export default memo(function GardenItem({
       clearInterval(setTime);
     };
   }, [timer]);
-  // useEffect(()=>{
-  //   if(set)
-
-  // },[coinBankVal])
-
   //
   const harvest = () => {
     deletePlant();
@@ -69,7 +64,9 @@ export default memo(function GardenItem({
         } else {
           if (plantStatus === 2) {
             setCoinBankVal(
-              coinBankVal + plant?.salePrice ? coinBankVal + plant?.salePrice : 0
+              coinBankVal + plant?.salePrice
+                ? coinBankVal + plant?.salePrice
+                : 0
             );
             setPlantStatus(1);
             setNumberOfHarvest(numberOfHarvest + 1);
@@ -83,7 +80,6 @@ export default memo(function GardenItem({
           setTimer(null);
           setIsPlanted(false);
           setNumberOfHarvest(0);
-          console.log("xóa"); 
         }
       }}
       onMouseEnter={() => {
@@ -95,6 +91,7 @@ export default memo(function GardenItem({
     >
       {plant && (
         <Fragment>
+          <img src={isPlanted ? "./assets/images/inf/waterdrop.png" : null} />
           <div className="gd-garden-image">
             <img src={plant[`image${plantStatus + 1}`]} />
             {isEmptyObject(plant) && (

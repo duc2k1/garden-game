@@ -4,6 +4,7 @@ import Garden from "./components/Garden";
 import SendBack from "./components/SendBank";
 import Glove from "./components/Tools/Glove";
 import Shovel from "./components/Tools/Shovel";
+import Tools from "./components/Tools/Tools";
 import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 //
@@ -80,10 +81,12 @@ export default memo(function App() {
           setCoinBankVal={setCoinBankVal}
         />
         <CoinBank coinBankVal={coinBankVal} />
-        <div>
-          <Glove isGetGlove={isGetGlove} setIsGetGlove={setIsGetGlove} />
-          <Shovel isGetShovel={isGetShovel} setIsGetShovel={setIsGetShovel} />
-        </div>
+        <Tools
+          isGetGlove={isGetGlove}
+          setIsGetGlove={setIsGetGlove}
+          isGetShovel={isGetShovel}
+          setIsGetShovel={setIsGetShovel}
+        />
       </div>
     </div>
   );
