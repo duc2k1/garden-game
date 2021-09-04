@@ -72,6 +72,7 @@ export default memo(function GardenItem({
             );
             setPlantStatus(1);
             setNumberOfHarvest(numberOfHarvest + 1);
+            setTimer(plant?.timer);
           }
         }
         //deletePlant by Shovel
