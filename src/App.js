@@ -56,10 +56,10 @@ export default memo(function App() {
   return (
     <div
       className="gd-container"
-      onClick={() => {
-        soundtrack.play();
-        soundtrack.loop = true;
-      }}
+      // onClick={() => {
+      //   soundtrack.play();
+      //   soundtrack.loop = true;
+      // }}
     >
       <div className="gd-container-game">
         <SendBack
