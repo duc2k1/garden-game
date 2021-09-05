@@ -12,11 +12,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 100%;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -khtml-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
   user-select: none;
 }
 
@@ -101,6 +96,7 @@
   right: 15px;
   bottom: 3px;
   font-size: 12px;
+  font-weight: bold;
 }
 
 .gd-sendBank-item img {
@@ -139,7 +135,7 @@
   top: 60%;
   left: 65%;
   transform: translate(-50%, -50%);
-  color: #01c301;
+  color: yellow;
 }
 
 .gd-bank {
@@ -160,7 +156,8 @@
 }
 
 .gd-bank-image:hover {
-  transform: scale(1.1);
+  position: absolute;
+  bottom: 5px;
 }
 
 .gd-water-drop-image {
@@ -174,4 +171,13 @@
   top: 5px;
   left: 5px;
   width: 20px;
+}
+
+.gd-bank-price {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: yellow;
 }
