@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from "react";
 import CoinBank from "./components/CoinBank";
-import Garden from "./components/Garden";
-import SendBack from "./components/SendBank";
+import Garden from "./components/Garden/Garden";
+import SendBack from "./components/SendBank/SendBank";
 import Tools from "./components/Tools/Tools";
 import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";

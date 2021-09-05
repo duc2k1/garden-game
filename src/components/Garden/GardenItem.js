@@ -1,6 +1,6 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
-import { isEmptyObject } from "../helpers/commonFunctions";
-import ProgressBar from "./Progress";
+import { isEmptyObject } from "../../helpers/commonFunctions";
+import ProgressBar from "../Progress";
 //
 export default memo(function GardenItem({
   plant,
@@ -14,23 +14,23 @@ export default memo(function GardenItem({
   coinBankVal,
   setCoinBankVal,
 }) {
-  const [plantBlur, setPlantBlur] = useState(null);
+  const [plantOpacity, setPlantOpacity] = useState(null);
   const [plantStatus, setPlantStatus] = useState(0); // 0: Seed, 1: Can't harvested, 2: Can harvested
   const [timer, setTimer] = useState(0);
   const [isPlanted, setIsPlanted] = useState(false);
   const [numberOfHarvest, setNumberOfHarvest] = useState(0);
   //
   useEffect(() => {
-    if (numberOfHarvest > 2) {
+    if (numberOfHarvest === 3) {
       handleSetDefault();
       return;
     }
-    if (plantStatus > 2) {
+    if (plantStatus === 3) {
       setPlantStatus(1);
       setNumberOfHarvest(numberOfHarvest + 1);
       setTimer(plant?.timer);
     }
-    if (timer === 0) {
+    if (timer === -1) {
       //planted
       setPlantStatus(plantStatus + 1);
       setTimer(plant?.timer);
@@ -46,7 +46,7 @@ export default memo(function GardenItem({
   //
   const handleSetDefault = () => {
     deletePlant();
-    setPlantBlur(null);
+    setPlantOpacity(null);
     setPlantStatus(0);
     setTimer(null);
     setIsPlanted(false);
@@ -93,10 +93,10 @@ export default memo(function GardenItem({
       className="gd-garden-item"
       onClick={() => handleInteractWithPlant()}
       onMouseEnter={() => {
-        setPlantBlur(choosePlant?.image2);
+        setPlantOpacity(choosePlant?.image2);
       }}
       onMouseLeave={() => {
-        setPlantBlur(null);
+        setPlantOpacity(null);
       }}
     >
       {plant && (
@@ -104,7 +104,7 @@ export default memo(function GardenItem({
           <div className="gd-garden-image">
             <img src={plant[`image${plantStatus + 1}`]} />
             {isEmptyObject(plant) && (
-              <img className="gd-garden-image-blur" src={plantBlur} />
+              <img className="gd-garden-image-opacity" src={plantOpacity} />
             )}
           </div>
           {isPlanted ? (
@@ -114,7 +114,7 @@ export default memo(function GardenItem({
                   plantStatus === 2 ? " over-timer" : ""
                 }`}
               >
-                <ProgressBar value={timer} max={plant?.timer} />
+                <ProgressBar value={plant?.timer - timer} max={plant?.timer} />
               </div>
               <img
                 src="./assets/images/inf/water-drop.png"
