@@ -5,17 +5,9 @@ export default memo(function sendBankItem({
   plant,
   choosePlant,
   setChoosePlant,
-  isGetGlove,
-  isGetShovel,
-  isGetTreeFood,
-  isGetWateringCan,
+  tool,
 }) {
-  const logicChoosePlant =
-    coinBankVal < plant.purchasePrice ||
-    isGetGlove ||
-    isGetShovel ||
-    isGetTreeFood ||
-    isGetWateringCan;
+  const logicChoosePlant = coinBankVal < plant.purchasePrice || tool !== null;
   const handleSendBank = () => {
     if (logicChoosePlant) {
       return;

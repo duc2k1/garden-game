@@ -2,21 +2,17 @@ import React, { useState, useEffect, memo } from "react";
 import CoinBank from "./components/CoinBank";
 import Garden from "./components/Garden/Garden";
 import SendBack from "./components/SendBank/SendBank";
-import Tools from "./components/Tools/Tools";
+import Tools from "./components/Tools";
 import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 //
 const plantsList = objectToArray(plants);
-const soundtrack = new Audio("./assets/sounds/soundtrack.mp3");
 //
 export default memo(function App() {
   const [coinBankVal, setCoinBankVal] = useState(5000); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
-  const [isGetGlove, setIsGetGlove] = useState(false);
-  const [isGetShovel, setIsGetShovel] = useState(false);
-  const [isGetTreeFood, setIsGetTreeFood] = useState(false);
-  const [isGetWateringCan, setIsGetWateringCan] = useState(false);
+  const [tool, setTool] = useState(null);
   //
   useEffect(() => {
     // block dragging of images
@@ -54,13 +50,7 @@ export default memo(function App() {
   };
   //
   return (
-    <div
-      className="gd-container"
-      // onClick={() => {
-      //   soundtrack.play();
-      //   soundtrack.loop = true;
-      // }}
-    >
+    <div className="gd-container">
       <div className="gd-container-game">
         <SendBack
           coinBankVal={coinBankVal}
@@ -69,34 +59,19 @@ export default memo(function App() {
           setChoosePlant={(plant) => {
             setChoosePlant(plant === choosePlant ? null : plant);
           }}
-          isGetGlove={isGetGlove}
-          isGetShovel={isGetShovel}
-          isGetTreeFood={isGetTreeFood}
-          isGetWateringCan={isGetWateringCan}
+          tool={tool}
         />
         <Garden
           plants={plants}
           choosePlant={choosePlant}
           setPlant={handleSetPlant}
           deletePlant={handleDeletePlant}
-          isGetGlove={isGetGlove}
-          isGetShovel={isGetShovel}
-          isGetTreeFood={isGetTreeFood}
-          isGetWateringCan={isGetWateringCan}
+          tool={tool}
           coinBankVal={coinBankVal}
           setCoinBankVal={setCoinBankVal}
         />
         <CoinBank coinBankVal={coinBankVal} />
-        <Tools
-          isGetGlove={isGetGlove}
-          setIsGetGlove={setIsGetGlove}
-          isGetShovel={isGetShovel}
-          setIsGetShovel={setIsGetShovel}
-          isGetTreeFood={isGetTreeFood}
-          setIsGetTreeFood={setIsGetTreeFood}
-          isGetWateringCan={isGetWateringCan}
-          setIsGetWateringCan={setIsGetWateringCan}
-        />
+        <Tools tool={tool} setTool={setTool} />
       </div>
     </div>
   );

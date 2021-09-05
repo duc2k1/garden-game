@@ -7,10 +7,7 @@ export default memo(function GardenItem({
   choosePlant,
   setPlant,
   deletePlant,
-  isGetShovel,
-  isGetGlove,
-  isGetTreeFood,
-  isGetWateringCan,
+  tool,
   coinBankVal,
   setCoinBankVal,
 }) {
@@ -60,14 +57,7 @@ export default memo(function GardenItem({
   };
   //
   const handleInteractWithPlant = () => {
-    if (
-      choosePlant &&
-      !isPlanted &&
-      !isGetGlove &&
-      !isGetShovel &&
-      !isGetTreeFood &&
-      !isGetWateringCan
-    ) {
+    if (choosePlant && tool === null) {
       setPlantStatus(0);
       setIsPlanted(true);
       setTimer(choosePlant?.timer);
@@ -75,7 +65,7 @@ export default memo(function GardenItem({
       return;
     }
     //harvest by glove
-    if (isGetGlove && plantStatus === 2) {
+    if (tool === "glove" && plantStatus === 2) {
       const sound = new Audio("./assets/sounds/coin.ogg");
       sound.play();
       setCoinBankVal(
@@ -87,7 +77,7 @@ export default memo(function GardenItem({
       return;
     }
     //deletePlant by Shovel
-    if (isGetShovel) {
+    if (tool === "shovel") {
       const sound = new Audio("./assets/sounds/plant.ogg");
       sound.play();
       handleSetDefault();
