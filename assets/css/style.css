@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .gd-container {
@@ -89,7 +89,6 @@
   position: relative;
   width: 90px;
   margin-bottom: 3px;
-  cursor: pointer;
 }
 
 .gd-sendBank-item:hover {
@@ -161,7 +160,6 @@
 }
 
 .gd-bank-image:hover {
-  cursor: pointer;
   transform: scale(1.1);
 }
 
@@ -169,14 +167,11 @@
   position: absolute;
   top: 5px;
   right: 5px;
-  font-size: 12px;
 }
 
-.gd-progress-bar {
+.gd-coin-image {
   position: absolute;
-  bottom: 0;
-}
-
-.react-sweet-progress-symbol {
-  display: none !important;
+  top: 5px;
+  left: 5px;
+  width: 20px;
 }
