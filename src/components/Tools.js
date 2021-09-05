@@ -1,10 +1,10 @@
 import React from "react";
 //
+const arr = ["glove", "shovel", "tree-food", "watering-can"];
+const urlImg = (val) => `url(./assets/images/tools/${val}.png)`;
+const costTreeFood = 50;
+//
 export default function Tools({ tool, setTool }) {
-  const arr = ["glove", "shovel", "tree-food", "watering-can"];
-
-  const urlImg = (val) => `url(./assets/images/tools/${val}.png)`;
-
   const handleSetTool = (val) => {
     if (tool === val) {
       setTool(null);
@@ -25,11 +25,16 @@ export default function Tools({ tool, setTool }) {
           key={val}
         >
           <div
-            className={tool === val ? "" : "gd-bank-image"}
+            className="gd-bank-image"
             style={{
               backgroundImage: urlImg(val),
+              display: tool === val ? "none" : "",
             }}
-          ></div>
+          >
+            {val === "tree-food" ? (
+              <div className="gd-bank-price">{costTreeFood}</div>
+            ) : null}
+          </div>
         </div>
       ))}
     </div>

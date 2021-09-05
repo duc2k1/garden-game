@@ -7,15 +7,15 @@ export default memo(function sendBankItem({
   setChoosePlant,
   tool,
 }) {
-  const logicChoosePlant = coinBankVal < plant.purchasePrice || tool !== null;
+  const noMoney = coinBankVal < plant.purchasePrice;
   const handleSendBank = () => {
-    if (logicChoosePlant) {
+    if (noMoney || tool !== null) {
       return;
     } else {
       setChoosePlant(null);
     }
   };
-
+  //
   return (
     <div
       className={`gd-sendBank-item${
@@ -24,7 +24,7 @@ export default memo(function sendBankItem({
       onClick={() => handleSendBank()}
     >
       <img src={plant.image1b} />
-      <img src={logicChoosePlant ? plant.image1b : plant.image2b} />
+      <img src={noMoney ? plant.image1b : plant.image2b} />
       <div className="gd-sendBank-item-price">{plant.purchasePrice}</div>
     </div>
   );

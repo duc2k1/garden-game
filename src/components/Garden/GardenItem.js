@@ -1,6 +1,5 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
 import { isEmptyObject } from "../../helpers/commonFunctions";
-import ProgressBar from "../Progress";
 //
 export default memo(function GardenItem({
   plant,
@@ -85,6 +84,8 @@ export default memo(function GardenItem({
     }
   };
   //
+  const sale = plant?.salePrice;
+  //
   return (
     <div
       className="gd-garden-item"
@@ -110,16 +111,16 @@ export default memo(function GardenItem({
                 className={`gd-garden-item-timer${
                   plantStatus === 2 ? " over-timer" : ""
                 }`}
-              >
-                <ProgressBar value={plant?.timer - timer} max={plant?.timer} />
-              </div>
-              <img
-                src="./assets/images/inf/water-drop.png"
-                className="gd-water-drop-image"
-              />
+              ></div>
               {plantStatus == 2 ? (
                 <img
-                  src="./assets/images/inf/gold-coin.png"
+                  src={`./assets/images/inf/${
+                    sale >= 25 && sale < 50
+                      ? "silver"
+                      : sale >= 50 && sale < 100
+                      ? "gold"
+                      : "diamond"
+                  }.png`}
                   className="gd-coin-image"
                 />
               ) : (

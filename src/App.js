@@ -9,7 +9,7 @@ import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 const plantsList = objectToArray(plants);
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(5000); //money
+  const [coinBankVal, setCoinBankVal] = useState(100); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);
