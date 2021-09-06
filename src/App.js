@@ -9,10 +9,12 @@ import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 const plantsList = objectToArray(plants);
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(100); //money
+  const [coinBankVal, setCoinBankVal] = useState(1000); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);
+  const [costTreeFood, setCostTreeFood] = useState(50);
+  const [costWateringCan, setCostWateringCan] = useState(10);
   //
   useEffect(() => {
     // block dragging of images
@@ -32,6 +34,8 @@ export default memo(function App() {
     if (coinPrice < 0) {
       return;
     }
+    setCostTreeFood(costTreeFood);
+    setCostWateringCan(costWateringCan);
     setCoinBankVal(coinPrice);
     // set plants
     const newPlants = [...plants];
@@ -69,6 +73,8 @@ export default memo(function App() {
           tool={tool}
           coinBankVal={coinBankVal}
           setCoinBankVal={setCoinBankVal}
+          costTreeFood={costTreeFood}
+          costWateringCan={costWateringCan}
         />
         <CoinBank coinBankVal={coinBankVal} />
         <Tools tool={tool} setTool={setTool} />

@@ -1,6 +1,7 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
 import { isEmptyObject } from "../../helpers/commonFunctions";
 //
+
 export default memo(function GardenItem({
   plant,
   choosePlant,
@@ -9,12 +10,16 @@ export default memo(function GardenItem({
   tool,
   coinBankVal,
   setCoinBankVal,
+  costTreeFood,
+  costWateringCan,
 }) {
   const [plantOpacity, setPlantOpacity] = useState(null);
   const [plantStatus, setPlantStatus] = useState(0); // 0: Seed, 1: Can't harvested, 2: Can harvested
   const [timer, setTimer] = useState(0);
   const [isPlanted, setIsPlanted] = useState(false);
   const [numberOfHarvest, setNumberOfHarvest] = useState(0);
+  const timeTreeFood = 3;
+  const timeWateringCan = 1;
   //
   useEffect(() => {
     if (isPlanted) {
@@ -80,6 +85,38 @@ export default memo(function GardenItem({
       const sound = new Audio("./assets/sounds/plant.ogg");
       sound.play();
       handleSetDefault();
+      return;
+    }
+    //TreeFood
+    if (tool === "tree-food" && isPlanted) {
+      if (plantStatus != 2 && coinBankVal >= costTreeFood) {
+        const sound = new Audio("./assets/sounds/treefood.ogg");
+        sound.play();
+        setCoinBankVal(
+          coinBankVal - costTreeFood ? coinBankVal - costTreeFood : 0
+        );
+        setTimer(timer - timeTreeFood);
+        if (timeTreeFood > timer) {
+          setPlantStatus(plantStatus + 1);
+          setTimer(plant?.timer);
+        }
+      }
+      return;
+    }
+    //Watering
+    if (tool === "watering-can" && isPlanted) {
+        if (plantStatus != 2 && coinBankVal >= costWateringCan) {
+          const sound = new Audio("./assets/sounds/watering.ogg");
+          sound.play();
+          setCoinBankVal(
+            coinBankVal - costWateringCan ? coinBankVal - costWateringCan : 0
+          );
+          setTimer(timer - timeWateringCan);
+          if (timeWateringCan > timer) {
+            setPlantStatus(plantStatus + 1);
+            setTimer(plant?.timer);
+          }
+        }
       return;
     }
   };

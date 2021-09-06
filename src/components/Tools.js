@@ -2,9 +2,15 @@ import React from "react";
 //
 const arr = ["shovel", "tree-food", "watering-can"];
 const urlImg = (val) => `url(./assets/images/tools/${val}.png)`;
-const costTreeFood = 50;
+// const costTreeFood = 50;
+// const costWateringCan = 10;
 //
-export default function Tools({ tool, setTool }) {
+export default function Tools({
+  tool,
+  setTool,
+  costTreeFood,
+  costWateringCan,
+}) {
   const handleSetTool = (val) => {
     if (tool === val) {
       setTool(null);
@@ -33,6 +39,9 @@ export default function Tools({ tool, setTool }) {
           >
             {val === "tree-food" ? (
               <div className="gd-bank-price">{costTreeFood}</div>
+            ) : null}
+            {val === "watering-can" ? (
+              <div className="gd-bank-price">{costWateringCan}</div>
             ) : null}
           </div>
         </div>

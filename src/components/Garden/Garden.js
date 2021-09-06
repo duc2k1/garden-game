@@ -9,6 +9,8 @@ export default memo(function Garden({
   tool,
   coinBankVal,
   setCoinBankVal,
+  costTreeFood,
+  costWateringCan,
 }) {
   //
   return (
@@ -23,6 +25,8 @@ export default memo(function Garden({
           tool={tool}
           coinBankVal={coinBankVal}
           setCoinBankVal={setCoinBankVal}
+          costTreeFood={costTreeFood}
+          costWateringCan={costWateringCan}
         />
       ))}
     </div>

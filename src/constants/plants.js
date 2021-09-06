@@ -7,7 +7,7 @@ export default {
     image3: "./assets/images/plant/Plant1B.gif",
     purchasePrice: 50,
     salePrice: 25,
-    timer: 1,
+    timer: 10,
   },
   plant2: {
     image1b: "./assets/images/plantb/PlantB2A.png",
