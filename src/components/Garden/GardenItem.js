@@ -63,8 +63,8 @@ export default memo(function GardenItem({
       setPlant();
       return;
     }
-    //harvest by glove
-    if (tool === "glove" && plantStatus === 2) {
+    //harvest plant
+    if (plantStatus === 2) {
       const sound = new Audio("./assets/sounds/coin.ogg");
       sound.play();
       setCoinBankVal(

@@ -1,6 +1,6 @@
 import React from "react";
 //
-const arr = ["glove", "shovel", "tree-food", "watering-can"];
+const arr = ["shovel", "tree-food", "watering-can"];
 const urlImg = (val) => `url(./assets/images/tools/${val}.png)`;
 const costTreeFood = 50;
 //
