@@ -7,6 +7,7 @@ import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 //
 const plantsList = objectToArray(plants);
+const soundPlant = new Audio("./assets/sounds/plant.ogg");
 //
 export default memo(function App() {
   const [coinBankVal, setCoinBankVal] = useState(100); //money
@@ -39,7 +40,7 @@ export default memo(function App() {
     setPlants(newPlants);
     setChoosePlant(null);
     // play sound plant
-    const soundPlant = new Audio("./assets/sounds/plant.ogg");
+    soundPlant.load();
     soundPlant.play();
   };
   const handleDeletePlant = (index) => {

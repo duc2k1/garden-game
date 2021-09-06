@@ -1,6 +1,6 @@
 import React from "react";
+import listTools from "../constants/tools";
 //
-const arr = ["shovel", "tree-food", "watering-can"];
 const urlImg = (val) => `url(./assets/images/tools/${val}.png)`;
 const costTreeFood = 50;
 //
@@ -17,10 +17,10 @@ export default function Tools({ tool, setTool }) {
   //
   return (
     <div>
-      {arr.map((val, index) => (
+      {listTools.map((val, index) => (
         <div
           className="gd-bank"
-          style={{ top: 100 * index + 50 }}
+          style={{ top: 80 * index + 60 }}
           onClick={() => handleSetTool(val)}
           key={val}
         >
@@ -30,11 +30,10 @@ export default function Tools({ tool, setTool }) {
               backgroundImage: urlImg(val),
               display: tool === val ? "none" : "",
             }}
-          >
-            {val === "tree-food" ? (
-              <div className="gd-bank-price">{costTreeFood}</div>
-            ) : null}
-          </div>
+          ></div>
+          {val === "tree-food" ? (
+            <div className="gd-bank-price">{costTreeFood}</div>
+          ) : null}
         </div>
       ))}
     </div>
