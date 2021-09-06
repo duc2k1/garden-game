@@ -6,6 +6,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  background-color: black;
+}
+
 .gd-container {
   position: absolute;
   top: 50%;
