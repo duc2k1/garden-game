@@ -2,8 +2,6 @@ import React from "react";
 import listTools from "../constants/tools";
 //
 const urlImg = (val) => `url(./assets/images/tools/${val}.png)`;
-// const costTreeFood = 50;
-// const costWateringCan = 10;
 //
 export default function Tools({
   tool,
@@ -37,12 +35,12 @@ export default function Tools({
               display: tool === val ? "none" : "",
             }}
           ></div>
-          {val === "tree-food" ? (
+          {val === "tree-food" && (
             <div className="gd-bank-price">{costTreeFood}</div>
-          ) : null}
-          {val === "watering-can" ? (
+          )}
+          {val === "watering-can" && (
             <div className="gd-bank-price">{costWateringCan}</div>
-          ) : null}
+          )}
         </div>
       ))}
     </div>

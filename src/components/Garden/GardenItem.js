@@ -1,13 +1,21 @@
 import React, { Fragment, memo, useEffect, useState } from "react";
-import { isEmptyObject } from "../../helpers/commonFunctions";
+import Coin from "./Coin";
+import PlantImage from "./PlantImage";
+import Timer from "./Timer";
 //
 const soundRemovePlant = new Audio("./assets/sounds/plant.ogg");
-const soundPLantGrow = new Audio("./assets/sounds/plant-grow.ogg");
+const soundPlantGrow = new Audio("./assets/sounds/plant-grow.ogg");
 const soundCoin = new Audio("./assets/sounds/coin.ogg");
+const soundDiamond = new Audio("./assets/sounds/diamond.wav");
 const soundTreeFood = new Audio("./assets/sounds/tree-food.ogg");
 const soundWateringCan = new Audio("./assets/sounds/watering-can.ogg");
 const soundBugSpray = new Audio("./assets/sounds/bug-spray.ogg");
 const soundPhonograph = new Audio("./assets/sounds/phonograph.ogg");
+const soundPause = new Audio("./assets/sounds/pause.ogg");
+const playSoundPause = () => {
+  soundPause.load();
+  soundPause.play();
+};
 //
 export default memo(function GardenItem({
   plant,
@@ -36,8 +44,8 @@ export default memo(function GardenItem({
         setTimer(plant?.timer);
       }
       if (plantStatus === 1 && timer === -1) {
-        soundPLantGrow.load();
-        soundPLantGrow.play();
+        soundPlantGrow.load();
+        soundPlantGrow.play();
       }
       if (timer === -1) {
         //Plant status increase
@@ -45,7 +53,7 @@ export default memo(function GardenItem({
         setTimer(plant?.timer);
       }
       if (numberOfHarvest === 3) {
-        handleSetDefault();
+        handleDeletePlantAndSetDefaultState();
         return;
       }
       //Plating
@@ -58,7 +66,7 @@ export default memo(function GardenItem({
     }
   }, [timer]);
   //
-  const handleSetDefault = () => {
+  const handleDeletePlantAndSetDefaultState = () => {
     deletePlant();
     setPlantOpacity(null);
     setPlantStatus(0);
@@ -68,8 +76,8 @@ export default memo(function GardenItem({
   };
   //
   const handleInteractWithPlant = () => {
-    if (tool == null) {
-      if (choosePlant) {
+    if (tool === null) {
+      if (choosePlant && !isPlanted) {
         setPlantStatus(0);
         setIsPlanted(true);
         setTimer(choosePlant?.timer);
@@ -77,9 +85,14 @@ export default memo(function GardenItem({
         return;
       }
       //Harvest plant
-      if (plantStatus === 2) {
-        soundCoin.load();
-        soundCoin.play();
+      if (!choosePlant && plantStatus === 2) {
+        if (sale >= 100) {
+          soundDiamond.load();
+          soundDiamond.play();
+        } else {
+          soundCoin.load();
+          soundCoin.play();
+        }
         setCoinBankVal(
           coinBankVal + plant?.salePrice ? coinBankVal + plant?.salePrice : 0
         );
@@ -89,63 +102,53 @@ export default memo(function GardenItem({
         return;
       }
     }
-    switch (tool) {
-      case "shovel":
-        soundRemovePlant.load();
-        soundRemovePlant.play();
-        handleSetDefault();
-        break;
-      case "tree-food":
-        soundTreeFood.load();
-        soundTreeFood.play();
-        break;
-      case "watering-can":
-        soundWateringCan.load();
-        soundWateringCan.play();
-        break;
-      case "bug-spray":
-        soundBugSpray.load();
-        soundBugSpray.play();
-        break;
-      case "phonograph":
-        soundPhonograph.load();
-        soundPhonograph.play();
-        break;
-      default:
-        break;
-    }
-    //TreeFood
-    if (tool === "tree-food" && isPlanted) {
-      if (plantStatus != 2 && coinBankVal >= costTreeFood) {
-        const sound = new Audio("./assets/sounds/treefood.ogg");
-        sound.play();
-        setCoinBankVal(
-          coinBankVal - costTreeFood ? coinBankVal - costTreeFood : 0
-        );
-        setTimer(timer - timeTreeFood);
-        if (timeTreeFood > timer) {
-          setPlantStatus(plantStatus + 1);
-          setTimer(plant?.timer);
-        }
+    if (isPlanted) {
+      switch (tool) {
+        case "shovel":
+          soundRemovePlant.load();
+          soundRemovePlant.play();
+          handleDeletePlantAndSetDefaultState();
+          break;
+        case "tree-food":
+          if (plantStatus != 2 && coinBankVal >= costTreeFood) {
+            soundTreeFood.load();
+            soundTreeFood.play();
+            setCoinBankVal(
+              coinBankVal - costTreeFood ? coinBankVal - costTreeFood : 0
+            );
+            setTimer(timer - timeTreeFood);
+            if (timeTreeFood > timer) {
+              setPlantStatus(plantStatus + 1);
+              setTimer(plant?.timer);
+            }
+          }
+          break;
+        case "watering-can":
+          if (plantStatus != 2 && coinBankVal >= costWateringCan) {
+            soundWateringCan.load();
+            soundWateringCan.play();
+            setCoinBankVal(
+              coinBankVal - costWateringCan ? coinBankVal - costWateringCan : 0
+            );
+            setTimer(timer - timeWateringCan);
+            if (timeWateringCan > timer) {
+              setPlantStatus(plantStatus + 1);
+              setTimer(plant?.timer);
+            }
+          }
+          break;
+        case "bug-spray":
+          soundBugSpray.load();
+          soundBugSpray.play();
+          break;
+        case "phonograph":
+          soundPhonograph.load();
+          soundPhonograph.play();
+          break;
+        default:
+          break;
       }
-      return;
-    }
-    //Watering
-    if (tool === "watering-can" && isPlanted) {
-      if (plantStatus != 2 && coinBankVal >= costWateringCan) {
-        const sound = new Audio("./assets/sounds/watering.ogg");
-        sound.play();
-        setCoinBankVal(
-          coinBankVal - costWateringCan ? coinBankVal - costWateringCan : 0
-        );
-        setTimer(timer - timeWateringCan);
-        if (timeWateringCan > timer) {
-          setPlantStatus(plantStatus + 1);
-          setTimer(plant?.timer);
-        }
-      }
-      return;
-    }
+    } else playSoundPause();
   };
   //
   const sale = plant?.salePrice;
@@ -163,36 +166,16 @@ export default memo(function GardenItem({
     >
       {plant && (
         <Fragment>
-          <div className="gd-garden-image">
-            <img src={plant[`image${plantStatus + 1}`]} />
-            {isEmptyObject(plant) && (
-              <img className="gd-garden-image-opacity" src={plantOpacity} />
-            )}
-          </div>
-          {isPlanted ? (
+          <PlantImage
+            plant={plant}
+            plantStatus={plantStatus}
+            plantOpacity={plantOpacity}
+          />
+          {isPlanted && (
             <>
-              <div
-                className={`gd-garden-item-timer${
-                  plantStatus === 2 ? " over-timer" : ""
-                }`}
-              ></div>
-              {plantStatus == 2 ? (
-                <img
-                  src={`./assets/images/inf/${
-                    sale >= 25 && sale < 50
-                      ? "silver"
-                      : sale >= 50 && sale < 100
-                      ? "gold"
-                      : "diamond"
-                  }.png`}
-                  className="gd-coin-image"
-                />
-              ) : (
-                <></>
-              )}
+              <Timer plantStatus={plantStatus} timer={timer} />
+              <Coin plantStatus={plantStatus} sale={sale} />
             </>
-          ) : (
-            <></>
           )}
         </Fragment>
       )}

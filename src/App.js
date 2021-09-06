@@ -62,7 +62,7 @@ export default memo(function App() {
           plants={plantsList}
           choosePlant={choosePlant}
           setChoosePlant={(plant) => {
-            setChoosePlant(plant === choosePlant ? null : plant);
+            setChoosePlant(plant !== choosePlant ? plant : null);
           }}
           tool={tool}
         />
