@@ -168,3 +168,15 @@
   font-weight: bold;
   color: yellow;
 }
+
+.gd-garden-item-timer {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 10px;
+}
+
+.gd-garden-item-timer.over-timer {
+  color: #b10909fc;
+  font-weight: 700;
+}
