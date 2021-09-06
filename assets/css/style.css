@@ -19,7 +19,7 @@
   position: relative;
   width: 1000px;
   height: 500px;
-  background-image: url(../images/inf/background1.jpg);
+  background-image: url(../images/inf/bg1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -48,18 +48,6 @@
   position: absolute;
   bottom: 0;
   opacity: 0.4;
-}
-
-.gd-garden-item-timer {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  font-size: 12px;
-}
-
-.gd-garden-item-timer.over-timer {
-  color: #b10909fc;
-  font-weight: 700;
 }
 
 .gd-garden-image {
@@ -142,22 +130,21 @@
   position: absolute;
   top: 20px;
   right: 50px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-image: url(../images/inf/bank.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .gd-bank-image {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-size: contain;
 }
 
 .gd-bank-image:hover {
-  position: absolute;
-  bottom: 5px;
+  transform: scale(1.1);
 }
 
 .gd-water-drop-image {
