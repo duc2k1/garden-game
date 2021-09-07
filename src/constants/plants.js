@@ -5,7 +5,7 @@ export default {
   plant1: {
     image1b: urlPlantb + "PlantB1A.png",
     image2b: urlPlantb + "PlantB1B.png",
-    image1: "Seed.png",
+    image1: urlPlant + "Seed.png",
     image2: urlPlant + "Plant1A.gif",
     image3: urlPlant + "Plant1B.gif",
     purchasePrice: 50,
