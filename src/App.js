@@ -14,7 +14,7 @@ const costTreeFood = 50;
 const costWateringCan = 10;
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(100); //money
+  const [coinBankVal, setCoinBankVal] = useState(6000); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);
