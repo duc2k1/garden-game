@@ -10,7 +10,7 @@ const plantsList = objectToArray(plants);
 const soundPlant = new Audio("./assets/sounds/plant.ogg");
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(1000); //money
+  const [coinBankVal, setCoinBankVal] = useState(6000); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);

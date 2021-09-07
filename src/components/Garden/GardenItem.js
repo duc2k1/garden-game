@@ -33,6 +33,7 @@ export default memo(function GardenItem({
   const [timer, setTimer] = useState(0);
   const [isPlanted, setIsPlanted] = useState(false);
   const [numberOfHarvest, setNumberOfHarvest] = useState(0);
+  const [numberOfTool, setNumberOfTool] = useState(0);
   const timeTreeFood = 3;
   const timeWateringCan = 1;
   //
@@ -54,6 +55,7 @@ export default memo(function GardenItem({
       }
       if (numberOfHarvest === 3) {
         handleDeletePlantAndSetDefaultState();
+        setNumberOfTool(0);
         return;
       }
       //Plating
@@ -94,13 +96,17 @@ export default memo(function GardenItem({
           soundCoin.play();
         }
         setCoinBankVal(
-          coinBankVal + plant?.salePrice ? coinBankVal + plant?.salePrice : 0
+          coinBankVal + plant?.salePrice * 2
+            ? coinBankVal + plant?.salePrice * 2
+            : 0
         );
         setPlantStatus(1);
         setNumberOfHarvest(numberOfHarvest + 1);
         setTimer(plant?.timer);
         return;
       }
+    }
+    if (numberOfTool != 1) {
     }
     if (isPlanted) {
       switch (tool) {
@@ -137,17 +143,64 @@ export default memo(function GardenItem({
             }
           }
           break;
-        case "bug-spray":
-          soundBugSpray.load();
-          soundBugSpray.play();
-          break;
-        case "phonograph":
-          soundPhonograph.load();
-          soundPhonograph.play();
-          break;
+        // case "bug-spray":
+        //   if (coinBankVal >= 3000 && numberOfTool != 1) {
+        //     setNumberOfTool(numberOfTool + 1);
+        //     setNumberOfHarvest(numberOfHarvest - 1);
+        //   }
+        //   soundBugSpray.load();
+        //   soundBugSpray.play();
+        //   break;
+        // case "phonograph":
+        //   if (coinBankVal >= 5000 && numberOfTool != 1) {
+        //     setNumberOfTool(numberOfTool + 1);
+        //     if (plantStatus === 2) {
+        //       if (sale >= 100) {
+        //         soundDiamond.load();
+        //         soundDiamond.play();
+        //       } else {
+        //         soundCoin.load();
+        //         soundCoin.play();
+        //       }
+        //       setCoinBankVal(coinBankVal + plant?.salePrice * 2);
+        //       setPlantStatus(1);
+        //       setNumberOfHarvest(numberOfHarvest + 1);
+        //       setTimer(plant?.timer);
+        //     }
+        //   }
+        //   soundPhonograph.load();
+        //   soundPhonograph.play();
+        // break;
         default:
           break;
       }
+      //Update Tools
+      if (numberOfTool != 1) {
+        if (tool === "bug-spray" && coinBankVal >= 3000) {
+          setNumberOfTool(numberOfTool + 1);
+          setNumberOfHarvest(numberOfHarvest - 1);
+          soundBugSpray.load();
+          soundBugSpray.play();
+        }
+        if (tool === "phonograph" && coinBankVal >= 5000) {
+          setNumberOfTool(numberOfTool + 1);
+          if (plantStatus === 2) {
+            if (sale >= 100) {
+              soundDiamond.load();
+              soundDiamond.play();
+            } else {
+              soundCoin.load();
+              soundCoin.play();
+            }
+            setCoinBankVal(coinBankVal + plant?.salePrice * 2);
+            setPlantStatus(1);
+            setNumberOfHarvest(numberOfHarvest + 1);
+            setTimer(plant?.timer);
+          }
+          soundPhonograph.load();
+          soundPhonograph.play();
+        }
+      } else playSoundPause();
     } else playSoundPause();
   };
   //
