@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.js": "/garden-game/static/js/main.17ce32a4.chunk.js",
+    "main.js.map": "/garden-game/static/js/main.17ce32a4.chunk.js.map",
+    "runtime-main.js": "/garden-game/static/js/runtime-main.9f81a077.js",
+    "runtime-main.js.map": "/garden-game/static/js/runtime-main.9f81a077.js.map",
+    "static/js/2.4d3ac657.chunk.js": "/garden-game/static/js/2.4d3ac657.chunk.js",
+    "static/js/2.4d3ac657.chunk.js.map": "/garden-game/static/js/2.4d3ac657.chunk.js.map",
+    "static/js/3.8293589c.chunk.js": "/garden-game/static/js/3.8293589c.chunk.js",
+    "static/js/3.8293589c.chunk.js.map": "/garden-game/static/js/3.8293589c.chunk.js.map",
+    "static/js/4.2e226595.chunk.js": "/garden-game/static/js/4.2e226595.chunk.js",
+    "static/js/4.2e226595.chunk.js.map": "/garden-game/static/js/4.2e226595.chunk.js.map",
+    "static/js/5.dd673d05.chunk.js": "/garden-game/static/js/5.dd673d05.chunk.js",
+    "static/js/5.dd673d05.chunk.js.map": "/garden-game/static/js/5.dd673d05.chunk.js.map",
+    "static/js/6.7c5a1e01.chunk.js": "/garden-game/static/js/6.7c5a1e01.chunk.js",
+    "static/js/6.7c5a1e01.chunk.js.map": "/garden-game/static/js/6.7c5a1e01.chunk.js.map",
+    "index.html": "/garden-game/index.html",
+    "static/js/2.4d3ac657.chunk.js.LICENSE.txt": "/garden-game/static/js/2.4d3ac657.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9f81a077.js",
+    "static/js/2.4d3ac657.chunk.js",
+    "static/js/main.17ce32a4.chunk.js"
+  ]
+}

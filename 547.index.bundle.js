@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkgarden_game=self.webpackChunkgarden_game||[]).push([[547],{7547:(e,a,n)=>{n.r(a),n.d(a,{default:()=>r});var c=n(7294);const r=(0,c.memo)((function(e){var a=e.coinBankVal;return c.createElement("div",{className:"gd-coinBank"},c.createElement("div",{className:"gd-coinBank-val"},a))}))}}]);
