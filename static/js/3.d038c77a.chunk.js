@@ -1,0 +1,2 @@
+(this["webpackJsonpgarden-game"]=this["webpackJsonpgarden-game"]||[]).push([[3],{18:function(a,e,n){"use strict";n.r(e);var c=n(0),s=n(1);e.default=Object(c.memo)((function(a){var e=a.coinBankVal;return Object(s.jsx)("div",{className:"gd-coinBank",children:Object(s.jsx)("div",{className:"gd-coinBank-val",children:e})})}))}}]);
+//# sourceMappingURL=3.d038c77a.chunk.js.map
