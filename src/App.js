@@ -1,4 +1,5 @@
 import React, { useState, useEffect, memo, lazy, Suspense } from "react";
+import LoadAllImages from "./components/LoadAllImages";
 const CoinBank = lazy(() => import("./components/CoinBank"));
 const Garden = lazy(() => import("./components/Garden/Garden"));
 const SendBank = lazy(() => import("./components/SendBank/SendBank"));
@@ -8,8 +9,7 @@ import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 import backgrounds from "./constants/backgrounds";
 //
 const plantsList = objectToArray(plants);
-const url = window.location.href;
-const soundPlant = new Audio(url + "/assets/sounds/plant.ogg");
+const soundPlant = new Audio("./assets/sounds/plant.ogg");
 const costTreeFood = 50;
 const costWateringCan = 10;
 //
@@ -71,6 +71,7 @@ export default memo(function App() {
         </h1>
       }
     >
+      <LoadAllImages plantsList={plantsList} />
       <div className="gd-container">
         <button onClick={() => (bg !== 2 ? setBg(bg + 1) : setBg(0))}>
           Change background
