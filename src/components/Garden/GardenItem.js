@@ -77,7 +77,8 @@ export default memo(function GardenItem({
   //
   const handleInteractWithPlant = () => {
     if (tool === null) {
-      if (choosePlant && !isPlanted) {
+      //Plant a tree
+      if (choosePlant && !isPlanted && coinBankVal >= choosePlant?.salePrice) {
         setPlantStatus(0);
         setIsPlanted(true);
         setTimer(choosePlant?.timer);

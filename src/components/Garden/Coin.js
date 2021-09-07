@@ -5,13 +5,13 @@ export default function Coin({ plantStatus, sale }) {
     <div>
       {plantStatus == 2 && (
         <img
-          src={`./assets/images/inf/${
+          src={`./assets/images/coins/${
             sale >= 25 && sale < 50
-              ? "silver.png"
+              ? "silver"
               : sale >= 50 && sale < 100
-              ? "gold.png"
-              : "diamond.gif"
-          }`}
+              ? "gold"
+              : "diamond"
+          }.gif`}
           className="gd-coin-image"
         />
       )}

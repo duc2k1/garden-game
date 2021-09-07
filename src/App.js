@@ -1,21 +1,24 @@
-import React, { useState, useEffect, memo } from "react";
-import CoinBank from "./components/CoinBank";
-import Garden from "./components/Garden/Garden";
-import SendBack from "./components/SendBank/SendBank";
-import Tools from "./components/Tools";
+import React, { useState, useEffect, memo, lazy, Suspense } from "react";
+import LoadAllImages from "./components/LoadAllImages";
+const CoinBank = lazy(() => import("./components/CoinBank"));
+const Garden = lazy(() => import("./components/Garden/Garden"));
+const SendBank = lazy(() => import("./components/SendBank/SendBank"));
+const Tools = lazy(() => import("./components/Tools"));
 import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
+import backgrounds from "./constants/backgrounds";
 //
 const plantsList = objectToArray(plants);
 const soundPlant = new Audio("./assets/sounds/plant.ogg");
+const costTreeFood = 50;
+const costWateringCan = 10;
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(1000); //money
+  const [coinBankVal, setCoinBankVal] = useState(100); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);
-  const [costTreeFood, setCostTreeFood] = useState(50);
-  const [costWateringCan, setCostWateringCan] = useState(10);
+  const [bg, setBg] = useState(0);
   //
   useEffect(() => {
     // block dragging of images
@@ -35,8 +38,6 @@ export default memo(function App() {
     if (coinPrice < 0) {
       return;
     }
-    setCostTreeFood(costTreeFood);
-    setCostWateringCan(costWateringCan);
     setCoinBankVal(coinPrice);
     // set plants
     const newPlants = [...plants];
@@ -55,36 +56,51 @@ export default memo(function App() {
   };
   //
   return (
-    <div className="gd-container">
-      <div className="gd-container-game">
-        <SendBack
-          coinBankVal={coinBankVal}
-          plants={plantsList}
-          choosePlant={choosePlant}
-          setChoosePlant={(plant) => {
-            setChoosePlant(plant !== choosePlant ? plant : null);
+    <Suspense
+      fallback={
+        <img src="./assets/images/plant/loading.png" style={{ width: 100 }} />
+      }
+    >
+      <LoadAllImages plantsList={plantsList} />
+      <div className="gd-container">
+        <button onClick={() => (bg !== 2 ? setBg(bg + 1) : setBg(0))}>
+          Change background
+        </button>
+        <div
+          className="gd-container-game"
+          style={{
+            backgroundImage: `url(${backgrounds[bg]})`,
           }}
-          tool={tool}
-        />
-        <Garden
-          plants={plants}
-          choosePlant={choosePlant}
-          setPlant={handleSetPlant}
-          deletePlant={handleDeletePlant}
-          tool={tool}
-          coinBankVal={coinBankVal}
-          setCoinBankVal={setCoinBankVal}
-          costTreeFood={costTreeFood}
-          costWateringCan={costWateringCan}
-        />
-        <CoinBank coinBankVal={coinBankVal} />
-        <Tools
-          tool={tool}
-          setTool={setTool}
-          costTreeFood={costTreeFood}
-          costWateringCan={costWateringCan}
-        />
+        >
+          <SendBank
+            coinBankVal={coinBankVal}
+            plants={plantsList}
+            choosePlant={choosePlant}
+            setChoosePlant={(plant) => {
+              setChoosePlant(plant !== choosePlant ? plant : null);
+            }}
+            tool={tool}
+          />
+          <Garden
+            plants={plants}
+            choosePlant={choosePlant}
+            setPlant={handleSetPlant}
+            deletePlant={handleDeletePlant}
+            tool={tool}
+            coinBankVal={coinBankVal}
+            setCoinBankVal={setCoinBankVal}
+            costTreeFood={costTreeFood}
+            costWateringCan={costWateringCan}
+          />
+          <CoinBank coinBankVal={coinBankVal} />
+          <Tools
+            tool={tool}
+            setTool={setTool}
+            costTreeFood={costTreeFood}
+            costWateringCan={costWateringCan}
+          />
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 });

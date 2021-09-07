@@ -6,6 +6,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  background-color: black;
+}
+
 .gd-container {
   position: absolute;
   top: 50%;
@@ -19,7 +23,6 @@
   position: relative;
   width: 1000px;
   height: 500px;
-  background-image: url(../images/inf/bg1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
