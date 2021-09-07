@@ -58,7 +58,17 @@ export default memo(function App() {
   return (
     <Suspense
       fallback={
-        <img src="./assets/images/plant/loading.png" style={{ width: 100 }} />
+        <h1
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+            color: "white",
+          }}
+        >
+          Loading...
+        </h1>
       }
     >
       <LoadAllImages plantsList={plantsList} />
