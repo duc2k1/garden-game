@@ -6,11 +6,7 @@ export default function LoadAllImages({ plantsList }) {
   return (
     <div style={{ display: "none" }}>
       {backgrounds.map((val, index) => (
-        <div key={index}>
-          <img src={val} />
-          <img src={val} />
-          <img src={val} />
-        </div>
+        <img key={index} src={val} />
       ))}
       {plantsList.map((val, index) => (
         <div key={index}>

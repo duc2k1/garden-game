@@ -1,5 +1,3 @@
-export default [
-  "./assets/images/backgrounds/bg1.jpg",
-  "./assets/images/backgrounds/bg2.jpg",
-  "./assets/images/backgrounds/bg3.jpg",
-];
+const url = "./assets/images/backgrounds/";
+//
+export default [url + "bg1.jpg", url + "bg2.jpg", url + "bg3.jpg"];

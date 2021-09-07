@@ -116,7 +116,6 @@ body {
   left: 50px;
   width: 128px;
   height: 31px;
-  background-image: url(../images/inf/coinbank.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -135,7 +134,6 @@ body {
   right: 50px;
   width: 60px;
   height: 60px;
-  background-image: url(../images/inf/bank.png);
   background-repeat: no-repeat;
   background-size: contain;
 }

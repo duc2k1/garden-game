@@ -24,7 +24,10 @@ export default function Tools({
       {listTools.map((val, index) => (
         <div
           className="gd-bank"
-          style={{ top: 80 * index + 60 }}
+          style={{
+            top: 80 * index + 60,
+            backgroundImage: "url(./assets/images/inf/bank.png)",
+          }}
           onClick={() => handleSetTool(val)}
           key={val}
         >
