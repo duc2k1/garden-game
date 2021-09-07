@@ -1,5 +1,7 @@
 import React, { memo } from "react";
 //
+const url = window.location.href;
+//
 export default memo(function CoinBank({ coinBankVal }) {
   //
   return (

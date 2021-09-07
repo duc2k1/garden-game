@@ -1,7 +1,8 @@
 import React from "react";
 import listTools from "../constants/tools";
 //
-const urlImg = (val) => `url(./assets/images/tools/${val}.png)`;
+const url = window.location.href;
+const urlImg = (val) => `url(${url}/assets/images/tools/${val}.png)`;
 //
 export default function Tools({
   tool,

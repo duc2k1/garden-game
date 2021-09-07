@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import SendBackItem from "./SendBankItem";
-
+//
 export default memo(function SendBank({
   coinBankVal,
   plants,

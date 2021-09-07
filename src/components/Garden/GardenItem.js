@@ -3,15 +3,16 @@ import Coin from "./Coin";
 import PlantImage from "./PlantImage";
 import Timer from "./Timer";
 //
-const soundRemovePlant = new Audio("./assets/sounds/plant.ogg");
-const soundPlantGrow = new Audio("./assets/sounds/plant-grow.ogg");
-const soundCoin = new Audio("./assets/sounds/coin.ogg");
-const soundDiamond = new Audio("./assets/sounds/diamond.wav");
-const soundTreeFood = new Audio("./assets/sounds/tree-food.ogg");
-const soundWateringCan = new Audio("./assets/sounds/watering-can.ogg");
-const soundBugSpray = new Audio("./assets/sounds/bug-spray.ogg");
-const soundPhonograph = new Audio("./assets/sounds/phonograph.ogg");
-const soundPause = new Audio("./assets/sounds/pause.ogg");
+const pathSound = window.location.href + "/assets/sounds/";
+const soundRemovePlant = new Audio(pathSound + "plant.ogg");
+const soundPlantGrow = new Audio(pathSound + "plant-grow.ogg");
+const soundCoin = new Audio(pathSound + "coin.ogg");
+const soundDiamond = new Audio(pathSound + "diamond.wav");
+const soundTreeFood = new Audio(pathSound + "tree-food.ogg");
+const soundWateringCan = new Audio(pathSound + "watering-can.ogg");
+const soundBugSpray = new Audio(pathSound + "bug-spray.ogg");
+const soundPhonograph = new Audio(pathSound + "phonograph.ogg");
+const soundPause = new Audio(pathSound + "pause.ogg");
 const playSoundPause = () => {
   soundPause.load();
   soundPause.play();
