@@ -22,6 +22,7 @@ export default function LoadAllImages({ plantsList }) {
           <img src={"./assets/images/tools/" + val + ".png"} />
         </div>
       ))}
+      <img src={"./assets/images/inf/bank.png"} />
     </div>
   );
 }
