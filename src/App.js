@@ -1,5 +1,6 @@
 import React, { useState, useEffect, memo, lazy, Suspense } from "react";
 import LoadAllImages from "./components/LoadAllImages";
+import StartGame from "./components/StartGame.";
 const CoinBank = lazy(() => import("./components/CoinBank"));
 const Garden = lazy(() => import("./components/Garden/Garden"));
 const SendBank = lazy(() => import("./components/SendBank/SendBank"));
@@ -15,16 +16,44 @@ const costTreeFood = 50;
 const costWateringCan = 10;
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(6000); //money
+  const [coinBankVal, setCoinBankVal] = useState(50); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);
-  const [bg, setBg] = useState(0);
+  const [bg, setBg] = useState(backgrounds[-1]);
+  const bgStart = "./assets/images/backgrounds/bg4.png";
+  const quit = "./assets/images/texts/SelectorScreen_Quit1.png";
   //
   useEffect(() => {
-    // block dragging of images
-    window.ondragstart = () => false;
+    // if game started
+    window.scrollTo(0, 1);
+    const started = localStorage.getItem("game-started");
+    if (started) {
+      // set background image
+      setBg(backgrounds[Math.floor(Math.random() * 3)]);
+
+      // get background from localStorage
+      const bg = localStorage.getItem("game-background");
+      setBg(bg);
+
+      const coinBank = localStorage.getItem("game-coin-bank");
+      setCoinBankVal(parseInt(coinBank));
+    }
   }, []);
+
+  useEffect(
+    () => localStorage.setItem("game-coin-bank", coinBankVal),
+    [coinBankVal]
+  );
+
+  useEffect(() => {
+    const everyEmpty = plants.every((o) => isEmptyObject(o));
+    if (everyEmpty && coinBankVal < 50) {
+      alert("Bạn đã thua vì hết tiền :))))");
+      localStorage.removeItem("game-started");
+      window.location.reload();
+    }
+  });
   //
   const handleSetPlant = (index) => {
     // check plant exists and selected
@@ -49,12 +78,32 @@ export default memo(function App() {
     soundPlant.load();
     soundPlant.play();
   };
+
+  const handleStartGame = async () => {
+    const bg = backgrounds[Math.floor(Math.random() * 3)];
+    setBg(bg);
+
+    // storage started
+    localStorage.setItem("game-started", true);
+    localStorage.setItem("game-background", bg);
+  };
+  const handleQuitGame = () => {
+    if (confirm("Bạn muốn thoát game bạn chắc chứ ?")) {
+      localStorage.removeItem("game-started");
+      localStorage.removeItem("game-background");
+      localStorage.removeItem("game-coin-bank");
+      window.location.reload();
+    }
+  };
+
   const handleDeletePlant = (index) => {
     // delete plants
     const newPlants = [...plants];
     newPlants[index] = {};
     setPlants(newPlants);
   };
+
+  const backgroundImage = bg !== undefined ? `url(${bg})` : "";
   //
   return (
     <Suspense
@@ -73,44 +122,47 @@ export default memo(function App() {
       }
     >
       <LoadAllImages plantsList={plantsList} />
-      <Progress />
-      <div className="gd-container">
-        <button onClick={() => (bg !== 2 ? setBg(bg + 1) : setBg(0))}>
-          Change background
-        </button>
-        <div
-          className="gd-container-game"
-          style={{
-            backgroundImage: `url(${backgrounds[bg]})`,
-          }}
-        >
-          <SendBank
-            coinBankVal={coinBankVal}
-            plants={plantsList}
-            choosePlant={choosePlant}
-            setChoosePlant={(plant) => {
-              setChoosePlant(plant !== choosePlant ? plant : null);
-            }}
-            tool={tool}
-          />
-          <Garden
-            plants={plants}
-            choosePlant={choosePlant}
-            setPlant={handleSetPlant}
-            deletePlant={handleDeletePlant}
-            tool={tool}
-            coinBankVal={coinBankVal}
-            setCoinBankVal={setCoinBankVal}
-            costTreeFood={costTreeFood}
-            costWateringCan={costWateringCan}
-          />
-          <CoinBank coinBankVal={coinBankVal} />
-          <Tools
-            tool={tool}
-            setTool={setTool}
-            costTreeFood={costTreeFood}
-            costWateringCan={costWateringCan}
-          />
+      <div
+        className="gd-container"
+        style={{ backgroundImage: `url(${bgStart})` }}
+      >
+        {bg !== undefined && (
+          <div className="gd-quit">
+            <img src={quit} onClick={handleQuitGame} />
+          </div>
+        )}
+
+        {bg === undefined && <StartGame onClick={handleStartGame} />}
+        <div className="gd-container-game" style={{ backgroundImage }}>
+          <div style={{ display: bg === undefined ? "none" : "block" }}>
+            <SendBank
+              coinBankVal={coinBankVal}
+              plants={plantsList}
+              choosePlant={choosePlant}
+              setChoosePlant={(plant) => {
+                setChoosePlant(plant !== choosePlant ? plant : null);
+              }}
+              tool={tool}
+            />
+            <Garden
+              plants={plants}
+              choosePlant={choosePlant}
+              setPlant={handleSetPlant}
+              deletePlant={handleDeletePlant}
+              tool={tool}
+              coinBankVal={coinBankVal}
+              setCoinBankVal={setCoinBankVal}
+              costTreeFood={costTreeFood}
+              costWateringCan={costWateringCan}
+            />
+            <CoinBank coinBankVal={coinBankVal} />
+            <Tools
+              tool={tool}
+              setTool={setTool}
+              costTreeFood={costTreeFood}
+              costWateringCan={costWateringCan}
+            />
+          </div>
         </div>
       </div>
     </Suspense>
