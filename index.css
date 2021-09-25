@@ -193,7 +193,7 @@ body {
   z-index: 1;
 }
 
-.gd-quit:hover{
+.gd-quit:hover {
   background-image: url(./public/assets/images/texts/SelectorScreen_Quit2.png);
   background-repeat: no-repeat;
 }
@@ -206,16 +206,16 @@ body {
   z-index: 100;
 }
 
-.gd-start h2 {
+.gd-start h1 {
   width: 200px;
   color: white;
   font-family: monospace;
   position: absolute;
-  top: 10px;
+  top: 5px;
   left: 100px;
   z-index: 10;
 }
-.gd-start h2:hover {
+.gd-start h1:hover {
   color: yellow;
 }
 
@@ -253,4 +253,3 @@ body {
     opacity: 0;
   }
 }
-

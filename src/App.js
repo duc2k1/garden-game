@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo, lazy, Suspense } from "react";
 import LoadAllImages from "./components/LoadAllImages";
-import StartGame from "./components/StartGame.";
+import StartGame from "./components/StartGame";
 const CoinBank = lazy(() => import("./components/CoinBank"));
 const Garden = lazy(() => import("./components/Garden/Garden"));
 const SendBank = lazy(() => import("./components/SendBank/SendBank"));
@@ -88,7 +88,7 @@ export default memo(function App() {
     localStorage.setItem("game-background", bg);
   };
   const handleQuitGame = () => {
-    if (confirm("Bạn muốn thoát game bạn chắc chứ ?")) {
+    if (confirm("Are you sure ?")) {
       localStorage.removeItem("game-started");
       localStorage.removeItem("game-background");
       localStorage.removeItem("game-coin-bank");
