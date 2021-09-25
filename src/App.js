@@ -7,6 +7,7 @@ const Tools = lazy(() => import("./components/Tools"));
 import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 import backgrounds from "./constants/backgrounds";
+import Progress from "./components/Progress";
 //
 const plantsList = objectToArray(plants);
 const soundPlant = new Audio("./assets/sounds/plant.ogg");
@@ -72,6 +73,7 @@ export default memo(function App() {
       }
     >
       <LoadAllImages plantsList={plantsList} />
+      <Progress />
       <div className="gd-container">
         <button onClick={() => (bg !== 2 ? setBg(bg + 1) : setBg(0))}>
           Change background
