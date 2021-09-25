@@ -181,3 +181,76 @@ body {
   color: #b10909fc;
   font-weight: 700;
 }
+
+.gd-quit {
+  position: absolute;
+  top: -31px;
+  right: 0;
+  width: 50px;
+  background-color: azure;
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.gd-quit:hover{
+  background-image: url(./public/assets/images/texts/SelectorScreen_Quit2.png);
+  background-repeat: no-repeat;
+}
+
+.gd-start {
+  position: absolute;
+  left: 35%;
+  top: 250px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.gd-start h2 {
+  width: 200px;
+  color: white;
+  font-family: monospace;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  z-index: 10;
+}
+.gd-start h2:hover {
+  color: yellow;
+}
+
+.gd-start img {
+  position: absolute;
+}
+
+.gd-start img:nth-child(2) {
+  top: -10px;
+  left: 5px;
+  z-index: 10;
+  animation: loading 4s infinite;
+  animation-delay: 2s;
+}
+
+.gd-start img:nth-child(3) {
+  top: -22px;
+}
+
+.gd-start img:nth-child(6) {
+  top: -79px;
+  left: 250px;
+  animation: loading 4s infinite;
+}
+
+.gd-start img:nth-child(5) {
+  left: 120px;
+  top: -70px;
+  animation: loading 4s infinite;
+  animation-delay: 3s;
+}
+
+@keyframes loading {
+  to {
+    opacity: 0;
+  }
+}
+
