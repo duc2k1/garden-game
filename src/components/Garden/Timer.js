@@ -1,13 +1,13 @@
 import React from "react";
+import styled from "styled-components";
 //
 export default function Timer({ plantStatus, timer }) {
-  return (
-    <div
-      className={`gd-garden-item-timer${
-        plantStatus === 2 ? " over-timer" : ""
-      }`}
-    >
-      {timer}
-    </div>
-  );
+	return <Con>{timer}</Con>;
 }
+//
+const Con = styled.div`
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	font-size: 10px;
+`;

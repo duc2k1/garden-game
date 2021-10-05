@@ -1,255 +1,237 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Montserrat", sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: "Montserrat", sans-serif;
 }
 
 body {
-  background-color: black;
+	background-color: black;
 }
 
 .gd-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  user-select: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 100%;
+	user-select: none;
 }
 
 .gd-container-game {
-  position: relative;
-  width: 1000px;
-  height: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
+	position: relative;
+	width: 1000px;
+	height: 500px;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .gd-garden {
-  position: absolute;
-  left: 21.2%;
-  top: 14%;
-  width: 606px;
-  height: 405px;
-  display: grid;
-  grid-template-columns: repeat(9, auto);
 }
 
 .gd-garden-item {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-  background-color: #fff0;
-  padding-bottom: 18px;
 }
 
 .gd-garden-image-opacity {
-  position: absolute;
-  bottom: 0;
-  opacity: 0.4;
+	position: absolute;
+	bottom: 0;
+	opacity: 0.4;
 }
 
 .gd-garden-image {
-  width: 56px;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	width: 56px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .gd-garden-image img {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 .gd-sendBank {
-  position: absolute;
-  padding: 12px;
-  left: 50px;
+	position: absolute;
+	padding: 12px;
+	left: 50px;
 }
 
 .gd-sendBank-item {
-  position: relative;
-  width: 90px;
-  margin-bottom: 3px;
+	position: relative;
+	width: 90px;
+	margin-bottom: 3px;
 }
 
 .gd-sendBank-item:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .gd-sendBank-item-price {
-  width: 20px;
-  position: absolute;
-  right: 15px;
-  bottom: 3px;
-  font-size: 12px;
-  font-weight: bold;
+	width: 20px;
+	position: absolute;
+	right: 15px;
+	bottom: 3px;
+	font-size: 12px;
+	font-weight: bold;
 }
 
 .gd-sendBank-item img {
-  width: 100%;
+	width: 100%;
 }
 
 .gd-sendBank-item img:nth-child(1) {
-  display: block;
+	display: block;
 }
 
 .gd-sendBank-item img:nth-child(2) {
-  display: none;
+	display: none;
 }
 
 .gd-sendBank-item.active img:nth-child(1) {
-  display: none;
+	display: none;
 }
 
 .gd-sendBank-item.active img:nth-child(2) {
-  display: block;
+	display: block;
 }
 
 .gd-coinBank {
-  position: absolute;
-  bottom: 20px;
-  left: 50px;
-  width: 128px;
-  height: 31px;
-  background-repeat: no-repeat;
-  background-size: cover;
+	position: absolute;
+	bottom: 20px;
+	left: 50px;
+	width: 128px;
+	height: 31px;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .gd-coinBank-val {
-  position: absolute;
-  top: 60%;
-  left: 65%;
-  transform: translate(-50%, -50%);
-  color: yellow;
+	position: absolute;
+	top: 60%;
+	left: 65%;
+	transform: translate(-50%, -50%);
+	color: yellow;
 }
 
 .gd-bank {
-  position: absolute;
-  top: 20px;
-  right: 50px;
-  width: 60px;
-  height: 60px;
-  background-repeat: no-repeat;
-  background-size: contain;
+	position: absolute;
+	top: 20px;
+	right: 50px;
+	width: 60px;
+	height: 60px;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 .gd-bank-image {
-  width: 60px;
-  height: 60px;
-  background-size: contain;
+	width: 60px;
+	height: 60px;
+	background-size: contain;
 }
 
 .gd-bank-image:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .gd-water-drop-image {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
 }
 
 .gd-coin-image {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 20px;
 }
 
 .gd-bank-price {
-  position: absolute;
-  bottom: 0;
-  left: 5px;
-  border-radius: 5px;
-  font-weight: bold;
-  color: yellow;
+	position: absolute;
+	bottom: 0;
+	left: 5px;
+	border-radius: 5px;
+	font-weight: bold;
+	color: yellow;
 }
 
 .gd-garden-item-timer {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  font-size: 10px;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	font-size: 10px;
 }
 
 .gd-garden-item-timer.over-timer {
-  color: #b10909fc;
-  font-weight: 700;
+	color: #b10909fc;
+	font-weight: 700;
 }
 
 .gd-quit {
-  position: absolute;
-  top: -31px;
-  right: 0;
-  width: 50px;
-  background-color: azure;
-  border-radius: 2px;
-  cursor: pointer;
-  z-index: 1;
+	position: absolute;
+	top: -31px;
+	right: 0;
+	width: 50px;
+	background-color: azure;
+	border-radius: 2px;
+	cursor: pointer;
+	z-index: 1;
 }
 
 .gd-quit:hover {
-  background-image: url(./public/assets/images/texts/SelectorScreen_Quit2.png);
-  background-repeat: no-repeat;
+	background-image: url(./public/assets/images/texts/SelectorScreen_Quit2.png);
+	background-repeat: no-repeat;
 }
 
 .gd-start {
-  position: absolute;
-  left: 35%;
-  top: 250px;
-  cursor: pointer;
-  z-index: 100;
+	position: absolute;
+	left: 35%;
+	top: 250px;
+	cursor: pointer;
+	z-index: 100;
 }
 
 .gd-start h1 {
-  width: 200px;
-  color: white;
-  font-family: monospace;
-  position: absolute;
-  top: 5px;
-  left: 100px;
-  z-index: 10;
+	width: 200px;
+	color: white;
+	font-family: monospace;
+	position: absolute;
+	top: 5px;
+	left: 100px;
+	z-index: 10;
 }
 .gd-start h1:hover {
-  color: yellow;
+	color: yellow;
 }
 
 .gd-start img {
-  position: absolute;
+	position: absolute;
 }
 
 .gd-start img:nth-child(2) {
-  top: -10px;
-  left: 5px;
-  z-index: 10;
-  animation: loading 4s infinite;
-  animation-delay: 2s;
+	top: -10px;
+	left: 5px;
+	z-index: 10;
+	animation: loading 4s infinite;
+	animation-delay: 2s;
 }
 
 .gd-start img:nth-child(3) {
-  top: -22px;
+	top: -22px;
 }
 
 .gd-start img:nth-child(6) {
-  top: -79px;
-  left: 250px;
-  animation: loading 4s infinite;
+	top: -79px;
+	left: 250px;
+	animation: loading 4s infinite;
 }
 
 .gd-start img:nth-child(5) {
-  left: 120px;
-  top: -70px;
-  animation: loading 4s infinite;
-  animation-delay: 3s;
+	left: 120px;
+	top: -70px;
+	animation: loading 4s infinite;
+	animation-delay: 3s;
 }
 
 @keyframes loading {
-  to {
-    opacity: 0;
-  }
+	to {
+		opacity: 0;
+	}
 }
