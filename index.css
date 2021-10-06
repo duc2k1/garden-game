@@ -34,9 +34,7 @@ body {
 }
 
 .gd-garden-image-opacity {
-	position: absolute;
-	bottom: 0;
-	opacity: 0.4;
+	
 }
 
 .gd-garden-image {
@@ -97,13 +95,7 @@ body {
 }
 
 .gd-coinBank {
-	position: absolute;
-	bottom: 20px;
-	left: 50px;
-	width: 128px;
-	height: 31px;
-	background-repeat: no-repeat;
-	background-size: cover;
+	
 }
 
 .gd-coinBank-val {
@@ -153,15 +145,11 @@ body {
 }
 
 .gd-garden-item-timer {
-	position: absolute;
-	bottom: 5px;
-	right: 5px;
-	font-size: 10px;
+
 }
 
 .gd-garden-item-timer.over-timer {
-	color: #b10909fc;
-	font-weight: 700;
+	
 }
 
 .gd-quit {
