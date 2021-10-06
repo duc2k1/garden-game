@@ -5,11 +5,18 @@ export default memo(function CoinBank({ coinBankVal }) {
 	//
 	return (
 		<Con style={{ backgroundImage: "url(./assets/images/inf/coinbank.png)" }}>
-			<div className="gd-coinBank-val">{coinBankVal}</div>
+			<CoinBankVal>{coinBankVal}</CoinBankVal>
 		</Con>
 	);
 });
 //
+const CoinBankVal = styled.div`
+	position: absolute;
+	top: 60%;
+	left: 65%;
+	transform: translate(-50%, -50%);
+	color: yellow;
+`;
 const Con = styled.div`
 	position: absolute;
 	bottom: 20px;

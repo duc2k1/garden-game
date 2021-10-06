@@ -34,7 +34,6 @@ body {
 }
 
 .gd-garden-image-opacity {
-	
 }
 
 .gd-garden-image {
@@ -50,9 +49,6 @@ body {
 }
 
 .gd-sendBank {
-	position: absolute;
-	padding: 12px;
-	left: 50px;
 }
 
 .gd-sendBank-item {
@@ -95,15 +91,9 @@ body {
 }
 
 .gd-coinBank {
-	
 }
 
 .gd-coinBank-val {
-	position: absolute;
-	top: 60%;
-	left: 65%;
-	transform: translate(-50%, -50%);
-	color: yellow;
 }
 
 .gd-bank {
@@ -145,11 +135,9 @@ body {
 }
 
 .gd-garden-item-timer {
-
 }
 
 .gd-garden-item-timer.over-timer {
-	
 }
 
 .gd-quit {

@@ -1,7 +1,7 @@
 export default [
-  "shovel",
-  "tree-food",
-  "watering-can",
-  "bug-spray",
-  "phonograph",
+	"shovel",
+	"tree-food",
+	"watering-can",
+	"bug-spray",
+	"phonograph",
 ];
