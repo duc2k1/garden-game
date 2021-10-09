@@ -8,12 +8,15 @@ const Tools = lazy(() => import("./components/Tools"));
 import plants from "./constants/plants";
 import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
 import backgrounds from "./constants/backgrounds";
-import Progress from "./components/Progress";
 //
 const plantsList = objectToArray(plants);
 const soundPlant = new Audio("./assets/sounds/plant.ogg");
+const rdSoundtrack = Math.floor(Math.random() * 3) + 1;
+const soundtrack = new Audio(`./assets/sounds/st${rdSoundtrack}.mp3`);
 const costTreeFood = 50;
 const costWateringCan = 10;
+const costBugSpray = 50;
+const costMusicPlayer = 100;
 //
 export default memo(function App() {
   const [coinBankVal, setCoinBankVal] = useState(50); //money
@@ -21,6 +24,7 @@ export default memo(function App() {
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);
   const [bg, setBg] = useState(backgrounds[-1]);
+  const [playSoundTrack, setPlaySoundtrack] = useState(false);
   const bgStart = "./assets/images/backgrounds/bg4.png";
   const quit = "./assets/images/texts/SelectorScreen_Quit1.png";
   //
@@ -54,6 +58,11 @@ export default memo(function App() {
       window.location.reload();
     }
   });
+
+  useEffect(() => {
+    soundtrack.load();
+    soundtrack.play();
+  }, [playSoundTrack]);
   //
   const handleSetPlant = (index) => {
     // check plant exists and selected
@@ -82,7 +91,7 @@ export default memo(function App() {
   const handleStartGame = async () => {
     const bg = backgrounds[Math.floor(Math.random() * 3)];
     setBg(bg);
-
+    setPlaySoundtrack(true);
     // storage started
     localStorage.setItem("game-started", true);
     localStorage.setItem("game-background", bg);
@@ -133,7 +142,13 @@ export default memo(function App() {
         )}
 
         {bg === undefined && <StartGame onClick={handleStartGame} />}
-        <div className="gd-container-game" style={{ backgroundImage }}>
+        <div
+          onClick={() => {
+            setPlaySoundtrack(true);
+          }}
+          className="gd-container-game"
+          style={{ backgroundImage }}
+        >
           <div style={{ display: bg === undefined ? "none" : "block" }}>
             <SendBank
               coinBankVal={coinBankVal}
@@ -154,6 +169,8 @@ export default memo(function App() {
               setCoinBankVal={setCoinBankVal}
               costTreeFood={costTreeFood}
               costWateringCan={costWateringCan}
+              costBugSpray={costBugSpray}
+              costMusicPlayer={costMusicPlayer}
             />
             <CoinBank coinBankVal={coinBankVal} />
             <Tools
@@ -161,6 +178,8 @@ export default memo(function App() {
               setTool={setTool}
               costTreeFood={costTreeFood}
               costWateringCan={costWateringCan}
+              costBugSpray={costBugSpray}
+              costMusicPlayer={costMusicPlayer}
             />
           </div>
         </div>

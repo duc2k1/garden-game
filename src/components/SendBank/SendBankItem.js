@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import styled from "styled-components";
 //
 export default memo(function sendBankItem({
   coinBankVal,
@@ -18,19 +17,15 @@ export default memo(function sendBankItem({
   };
   //
   return (
-    <Con
-      className={`${plant?.key !== choosePlant?.key ? " active" : ""}`}
+    <div
+      className={`gd-sendBank-item${
+        plant?.key !== choosePlant?.key ? " active" : ""
+      }`}
       onClick={() => handleSendBank()}
     >
       <img src={plant.image1b} />
       <img src={noMoney ? plant.image1b : plant.image2b} />
       <div className="gd-sendBank-item-price">{plant.purchasePrice}</div>
-    </Con>
+    </div>
   );
 });
-//
-const Con = styled.div`
-  position: relative;
-  width: 90px;
-  margin-bottom: 3px;
-`;

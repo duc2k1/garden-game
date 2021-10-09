@@ -29,6 +29,8 @@ export default memo(function GardenItem({
   setCoinBankVal,
   costTreeFood,
   costWateringCan,
+  costBugSpray,
+  costMusicPlayer,
 }) {
   const [plantOpacity, setPlantOpacity] = useState(null);
   const [plantStatus, setPlantStatus] = useState(0); // 0: Seed, 1: Can't harvested, 2: Can harvested
@@ -151,27 +153,21 @@ export default memo(function GardenItem({
       }
       //Update Tools
       if (numberOfTool != 1) {
-        if (tool === "bug-spray" && coinBankVal >= 3000) {
+        if (tool === "bug-spray" && coinBankVal >= costBugSpray) {
           setNumberOfTool(numberOfTool + 1);
           setNumberOfHarvest(numberOfHarvest - 1);
+          setCoinBankVal(
+            coinBankVal - costBugSpray ? coinBankVal - costBugSpray : 0
+          );
           soundBugSpray.load();
           soundBugSpray.play();
         }
-        if (tool === "phonograph" && coinBankVal >= 5000) {
+        if (tool === "phonograph" && coinBankVal >= costMusicPlayer) {
           setNumberOfTool(numberOfTool + 1);
-          if (plantStatus === 2) {
-            if (sale >= 100) {
-              soundDiamond.load();
-              soundDiamond.play();
-            } else {
-              soundCoin.load();
-              soundCoin.play();
-            }
-            setCoinBankVal(coinBankVal + plant?.salePrice * 2);
-            setPlantStatus(1);
-            setNumberOfHarvest(numberOfHarvest + 1);
-            setTimer(plant?.timer);
-          }
+          setNumberOfHarvest(numberOfHarvest - 2);
+          setCoinBankVal(
+            coinBankVal - costMusicPlayer ? coinBankVal - costMusicPlayer : 0
+          );
           soundPhonograph.load();
           soundPhonograph.play();
         }
@@ -200,8 +196,12 @@ export default memo(function GardenItem({
           />
           {isPlanted && (
             <>
-              <Timer plantStatus={plantStatus} timer={timer} />
               <Coin plantStatus={plantStatus} sale={sale} />
+              <progress
+                value={timer}
+                max="10"
+                style={{ width: 50, position: "absolute", bottom: -5 }}
+              />
             </>
           )}
         </Fragment>

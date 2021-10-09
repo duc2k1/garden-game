@@ -8,6 +8,8 @@ export default function Tools({
   setTool,
   costTreeFood,
   costWateringCan,
+  costBugSpray,
+  costMusicPlayer,
 }) {
   const handleSetTool = (val) => {
     if (tool === val) {
@@ -43,6 +45,12 @@ export default function Tools({
           )}
           {val === "watering-can" && (
             <div className="gd-bank-price">{costWateringCan}</div>
+          )}
+          {val === "bug-spray" && (
+            <div className="gd-bank-price">{costBugSpray}</div>
+          )}
+          {val === "phonograph" && (
+            <div className="gd-bank-price">{costMusicPlayer}</div>
           )}
         </div>
       ))}

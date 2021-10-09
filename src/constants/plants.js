@@ -10,7 +10,7 @@ export default {
     image3: urlPlant + "Plant1B.gif",
     purchasePrice: 50,
     salePrice: 25,
-    timer: 2,
+    timer: 10,
   },
   plant2: {
     image1b: urlPlantb + "PlantB2A.png",
@@ -20,7 +20,7 @@ export default {
     image3: urlPlant + "Plant2B.gif",
     purchasePrice: 100,
     salePrice: 50,
-    timer: 2,
+    timer: 10,
   },
   plant3: {
     image1b: urlPlantb + "PlantB3A.png",
@@ -30,7 +30,7 @@ export default {
     image3: urlPlant + "Plant3B.gif",
     purchasePrice: 150,
     salePrice: 75,
-    timer: 2,
+    timer: 10,
   },
   plant4: {
     image1b: urlPlantb + "PlantB4A.png",
@@ -40,7 +40,7 @@ export default {
     image3: urlPlant + "Plant4B.gif",
     purchasePrice: 50,
     salePrice: 25,
-    timer: 2,
+    timer: 10,
   },
   plant5: {
     image1b: urlPlantb + "PlantB5A.png",
@@ -50,7 +50,7 @@ export default {
     image3: urlPlant + "Plant5B.gif",
     purchasePrice: 200,
     salePrice: 100,
-    timer: 2,
+    timer: 10,
   },
   plant6: {
     image1b: urlPlantb + "PlantB6A.png",
@@ -60,7 +60,7 @@ export default {
     image3: urlPlant + "Plant6B.gif",
     purchasePrice: 50,
     salePrice: 25,
-    timer: 2,
+    timer: 10,
   },
   plant7: {
     image1b: urlPlantb + "PlantB7A.png",
@@ -70,6 +70,6 @@ export default {
     image3: urlPlant + "Plant7B.gif",
     purchasePrice: 250,
     salePrice: 125,
-    timer: 2,
+    timer: 10,
   },
 };
