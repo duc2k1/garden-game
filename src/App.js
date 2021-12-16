@@ -1,13 +1,13 @@
-import React, { useState, useEffect, memo, lazy, Suspense } from "react";
+import React, { lazy, memo, Suspense, useEffect, useState } from "react";
 import LoadAllImages from "./components/LoadAllImages";
 import StartGame from "./components/StartGame";
+import backgrounds from "./constants/backgrounds";
+import plants from "./constants/plants";
+import { isEmptyObject, objectToArray } from "./helpers/commonFunctions";
 const CoinBank = lazy(() => import("./components/CoinBank"));
 const Garden = lazy(() => import("./components/Garden/Garden"));
 const SendBank = lazy(() => import("./components/SendBank/SendBank"));
 const Tools = lazy(() => import("./components/Tools"));
-import plants from "./constants/plants";
-import { objectToArray, isEmptyObject } from "./helpers/commonFunctions";
-import backgrounds from "./constants/backgrounds";
 //
 const plantsList = objectToArray(plants);
 const soundPlant = new Audio("./assets/sounds/plant.ogg");
@@ -19,7 +19,7 @@ const costBugSpray = 50;
 const costMusicPlayer = 100;
 //
 export default memo(function App() {
-  const [coinBankVal, setCoinBankVal] = useState(50); //money
+  const [coinBankVal, setCoinBankVal] = useState(250); //money
   const [plants, setPlants] = useState([...Array(45).fill({})]);
   const [choosePlant, setChoosePlant] = useState(null);
   const [tool, setTool] = useState(null);
